@@ -208,79 +208,72 @@
 </footer>
 
 <script>
+// 激光雨 2D 轻量背景（极低性能消耗，手机流畅）
 const container = document.getElementById('bg3d');
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
-const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x000000, 0);
-container.appendChild(renderer.domElement);
+const canvas = document.createElement('canvas');
+canvas.style.position = 'fixed';
+canvas.style.top = '0';
+canvas.style.left = '0';
+canvas.style.width = '100%';
+canvas.style.height = '100%';
+canvas.style.zIndex = '-1';
+canvas.style.opacity = '0.35';
+container.appendChild(canvas);
 
-const particlesCount = 800;
-const positions = new Float32Array(particlesCount * 3);
-const colors = new Float32Array(particlesCount * 3);
-const sizes = new Float32Array(particlesCount);
+const ctx = canvas.getContext('2d');
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
 
-const color1 = new THREE.Color(0x00F3FF);
-const color2 = new THREE.Color(0x7000FF);
+// 激光线数量，手机自动更少
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+const count = isMobile ? 40 : 80;
 
-for (let i = 0; i < particlesCount; i++) {
-  const i3 = i * 3;
-  const angle = Math.random() * Math.PI * 2;
-  const r = 3 + Math.random() * 6;
-  positions[i3] = Math.cos(angle) * r;
-  positions[i3 + 1] = Math.sin(angle) * r;
-  positions[i3 + 2] = Math.random() * 1200 - 600;
-
-  const mix = Math.random();
-  const finalColor = color1.clone().lerp(color2, mix);
-  colors[i3] = finalColor.r;
-  colors[i3 + 1] = finalColor.g;
-  colors[i3 + 2] = finalColor.b;
-
-  sizes[i] = Math.random() * 0.15 + 0.03;
+// 存储每条激光
+const lines = [];
+for(let i=0;i<count;i++){
+  lines.push({
+    x: Math.random()*w,
+    y: Math.random()*-h,
+    len: Math.random()*80+40,
+    speed: Math.random()*4+2,
+    hue: Math.random()>0.5 ? 180 : 260, // 青/紫
+    thick: Math.random()*1.2+0.3
+  })
 }
 
-const geometry = new THREE.BufferGeometry();
-geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+function draw(){
+  ctx.fillStyle = 'rgba(0,0,0,0.08)';
+  ctx.fillRect(0,0,w,h);
 
-const material = new THREE.PointsMaterial({
-  size: 0.12,
-  vertexColors: true,
-  transparent: true,
-  opacity: 0.7,
-  blending: THREE.AdditiveBlending,
-  depthWrite: false
-});
+  lines.forEach(l=>{
+    ctx.beginPath();
+    ctx.moveTo(l.x, l.y);
+    ctx.lineTo(l.x, l.y + l.len);
+    ctx.strokeStyle = `hsla(${l.hue},100%,60%,0.6)`;
+    ctx.lineWidth = l.thick;
+    ctx.stroke();
 
-const particleMesh = new THREE.Points(geometry, material);
-scene.add(particleMesh);
-
-camera.position.z = 12;
-
-function animate() {
-  requestAnimationFrame(animate);
-  const posArr = particleMesh.geometry.attributes.position.array;
-  for (let i = 2; i < posArr.length; i += 3) {
-    posArr[i] += 0.8;
-    if (posArr[i] > 600) posArr[i] = -600;
-  }
-  particleMesh.geometry.attributes.position.needsUpdate = true;
-  particleMesh.rotation.y += 0.0008;
-  renderer.render(scene, camera);
+    l.y += l.speed;
+    if(l.y > h){
+      l.y = -l.len;
+      l.x = Math.random()*w;
+    }
+  })
+  requestAnimationFrame(draw);
 }
-animate();
+draw();
 
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-});
+// 窗口适配
+window.addEventListener('resize',()=>{
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+})
 
-const obs = new IntersectionObserver(e=>e.forEach(i=>i.isIntersecting&&i.target.classList.add('animate-fade-in')),{threshold:0.1});
-document.querySelectorAll('.animate-section').forEach(s=>obs.observe(s));
+// 切后台暂停，省电
+document.addEventListener('visibilitychange', ()=>{
+  if(document.hidden) cancelAnimationFrame(draw);
+  else requestAnimationFrame(draw);
+})
 </script>
 
 </body>
