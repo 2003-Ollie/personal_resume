@@ -88,8 +88,10 @@
 
 <div class="max-w-5xl mx-auto px-6 pt-32 pb-20">
   <div class="text-center mb-16">
+    
     <!-- 照片设置-->
-    <img src="zhr.jpg" class="mx-auto mb-6 rounded-xl border-2 border-[#00F3FF]/60 shadow-lg shadow-[#00F3FF]/20 bg-black p-1 w-[130px] h-[130px] object-cover" alt="照片">
+    <img src="zhr2.jpg" class="mx-auto mb-6 rounded-xl border-2 border-[#00F3FF]/60 shadow-lg shadow-[#00F3FF]/20 bg-black p-1 w-[130px] h-[130px] object-cover" alt="照片">
+    
     <h1 class="text-4xl text-[#00F3FF] font-bold mb-2">张浩然</h1>
     <p class="text-gray-400">电话：17880151269 | 邮箱：zhanghr@hdu.edu.cn | 中共党员</p>
     <div class="mt-8 mx-auto max-w-xl bg-black/70 border border-[#00F3FF]/30 rounded p-4 text-left h-36 overflow-hidden">
@@ -201,31 +203,123 @@
 </footer>
 
 <script>
-const container = document.getElementById('bg3d');
+  
+// const container = document.getElementById('bg3d');
+// const scene = new THREE.Scene();
+// const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+// const renderer = new THREE.WebGLRenderer({alpha:true,antialias:true});
+// renderer.setSize(window.innerWidth, window.innerHeight);
+// container.appendChild(renderer.domElement);
+
+// const geometry = new THREE.SphereGeometry(2,32,32);
+// const points = [];
+// const pos = geometry.attributes.position.array;
+// for(let i=0;i<pos.length;i+=3) points.push(new THREE.Vector3(pos[i],pos[i+1],pos[i+2]));
+// const cloud = new THREE.Points(new THREE.BufferGeometry().setFromPoints(points), new THREE.PointsMaterial({color:0x00F3FF,size:0.02,transparent:true,opacity:0.8}));
+// scene.add(cloud); camera.position.z=4;
+
+// function animate(){requestAnimationFrame(animate); cloud.rotation.y+=0.002; cloud.rotation.x+=0.001; renderer.render(scene,camera);}
+// animate();
+
+// const term = document.getElementById('terminal');
+// const lines = ['$ initializing robot_system...','[OK] point_cloud_processing started','[OK] sensor_calibration loaded','[OK] semantic_segmentation ready','[OK] navigation_planner online','> System running successfully'];
+// let t='',l=0,c=0;
+// function type(){if(l<lines.length){if(c<lines[l].length){t+=lines[l][c]; term.innerText=t; c++; setTimeout(type,70);}else{t+='\n'; c=0; l++; setTimeout(type,200);}}}
+// setTimeout(type,800);
+
+// const obs = new IntersectionObserver(e=>e.forEach(i=>i.isIntersecting&&i.target.classList.add('animate-fade-in')),{threshold:0.1});
+// document.querySelectorAll('.animate-section').forEach(s=>obs.observe(s));
+
+  const container = document.getElementById('bg3d');
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({alpha:true,antialias:true});
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(0x000000, 0);
 container.appendChild(renderer.domElement);
 
-const geometry = new THREE.SphereGeometry(2,32,32);
-const points = [];
-const pos = geometry.attributes.position.array;
-for(let i=0;i<pos.length;i+=3) points.push(new THREE.Vector3(pos[i],pos[i+1],pos[i+2]));
-const cloud = new THREE.Points(new THREE.BufferGeometry().setFromPoints(points), new THREE.PointsMaterial({color:0x00F3FF,size:0.02,transparent:true,opacity:0.8}));
-scene.add(cloud); camera.position.z=4;
+// 1. 静态星空背景粒子
+const starCount = 6000;
+const starPoints = [];
+for (let i = 0; i < starCount; i++) {
+  const x = (Math.random() - 0.5) * 30;
+  const y = (Math.random() - 0.5) * 30;
+  const z = (Math.random() - 0.5) * 30;
+  starPoints.push(new THREE.Vector3(x, y, z));
+}
+const starGeo = new THREE.BufferGeometry().setFromPoints(starPoints);
+const starMat = new THREE.PointsMaterial({ color: 0xcccccc, size: 0.02, transparent: true, opacity: 0.4 });
+const stars = new THREE.Points(starGeo, starMat);
+scene.add(stars);
 
-function animate(){requestAnimationFrame(animate); cloud.rotation.y+=0.002; cloud.rotation.x+=0.001; renderer.render(scene,camera);}
+// 2. 流星类
+class ShootingStar {
+  constructor() {
+    this.geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(6);
+    this.geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    this.material = new THREE.PointsMaterial({
+      color: 0x00F3FF,
+      size: 0.08,
+      transparent: true,
+      opacity: 0.9,
+      blending: THREE.AdditiveBlending
+    });
+
+    this.mesh = new THREE.Points(this.geometry, this.material);
+    this.reset();
+    scene.add(this.mesh);
+  }
+
+  reset() {
+    // 流星起始位置：画面右上角
+    this.x = Math.random() * 15 + 8;
+    this.y = Math.random() * 8 + 4;
+    this.z = (Math.random() - 0.5) * 10;
+    this.speedX = -(Math.random() * 0.08 + 0.04);
+    this.speedY = -(Math.random() * 0.08 + 0.04);
+    this.life = 1;
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.life -= 0.008;
+    this.material.opacity = this.life;
+
+    const pos = this.geometry.attributes.position.array;
+    pos[0] = this.x; pos[1] = this.y; pos[2] = this.z;
+    pos[3] = this.x - this.speedX * 3;
+    pos[4] = this.y - this.speedY * 3;
+    pos[5] = this.z;
+    this.geometry.attributes.position.needsUpdate = true;
+
+    if (this.life <= 0) this.reset();
+  }
+}
+
+// 生成 8 颗流星，循环划过
+const shootingStars = Array.from({ length: 8 }, () => new ShootingStar());
+
+camera.position.z = 12;
+
+function animate() {
+  requestAnimationFrame(animate);
+  stars.rotation.y += 0.0002;
+  shootingStars.forEach(star => star.update());
+  renderer.render(scene, camera);
+}
 animate();
 
-const term = document.getElementById('terminal');
-const lines = ['$ initializing robot_system...','[OK] point_cloud_processing started','[OK] sensor_calibration loaded','[OK] semantic_segmentation ready','[OK] navigation_planner online','> System running successfully'];
-let t='',l=0,c=0;
-function type(){if(l<lines.length){if(c<lines[l].length){t+=lines[l][c]; term.innerText=t; c++; setTimeout(type,70);}else{t+='\n'; c=0; l++; setTimeout(type,200);}}}
-setTimeout(type,800);
+// 窗口自适应
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
 
-const obs = new IntersectionObserver(e=>e.forEach(i=>i.isIntersecting&&i.target.classList.add('animate-fade-in')),{threshold:0.1});
-document.querySelectorAll('.animate-section').forEach(s=>obs.observe(s));
+  
 </script>
 
 </body>
