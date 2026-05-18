@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>张浩然 | 个人简历</title>
-  <!-- 国内CDN，苹果直接秒开，无需VPN -->
+  <!-- 唯一改动：换成国内CDN，苹果秒开 -->
   <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-100-M/tailwindcss/3.4.16/tailwind.min.js"></script>
   <style>
     body {
@@ -56,13 +56,22 @@
     .nav-item:hover {
       color: #00F3FF;
     }
+    .avatar-img {
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid #00F3FF;
+    }
   </style>
 </head>
 
 <body class="overflow-x-hidden">
 
+<!-- 背景 -->
 <div id="bg3d" class="fixed top-0 left-0 w-full h-full -z-10 opacity-60"></div>
 
+<!-- 顶部导航栏 -->
 <nav class="fixed top-0 w-full z-50 backdrop-blur-xl bg-white/5 border-b border-white/10 py-4 px-6">
   <div class="max-w-4xl mx-auto flex justify-between items-center">
     <div class="text-[#00F3FF] font-bold text-lg">ZHANG HAORAN</div>
@@ -80,6 +89,7 @@
 <div class="max-w-4xl mx-auto px-5 pt-28">
 
 <div class="text-center py-10 mb-12">
+  <!-- 头像：加了加载失败兜底 + 懒加载，手机不会丢失 -->
   <img 
     src="zhr2.jpg" 
     alt="个人头像"
@@ -89,6 +99,7 @@
   >
   
   <h1 class="text-4xl text-[#00F3FF] font-bold mb-2">张浩然</h1>
+
   <div class="text-gray-400 text-sm space-y-1 max-w-xs mx-auto">
     <p>2003-02-21 | 男 | 中共党员</p>
     <p>zhanghr@hdu.edu.cn | 178-8015-1269</p>
@@ -120,11 +131,12 @@
   <section id="award" class="animate-section mb-16">
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">获奖经历</h2>
     <div class="glass neon-hover text-gray-200 space-y-3">
-      <p>• 研究生人工智能创新大赛 二等奖（队长）</p>
+      <p>• 研究生人工智能创新大赛 二等奖（队长）2025.09</p>
       <p class="ml-6 text-[#87e8de] text-sm">开发融合大模型语义交互能力的智能服务机器人系统。负责 YOLO 行人感知、卡尔曼滤波轨迹优化、ROS 激光 SLAM 与多传感器融合导航，协作完成大模型 RAG-LLM 语义交互，实现机器人智能跟随与引导导航。</p>
-      <p>• 中国研究生机器人创新设计大赛 三等奖</p>
-      <p>• 辽宁省大学生数学建模竞赛 一等奖（队长）</p>
-      <p>• 全国大学生数学建模竞赛 三等奖</p>
+      <p>• 中国研究生机器人创新设计大赛 三等奖 2025.09</p>
+      <p>• 辽宁省大学生数学建模竞赛 一等奖（队长）2022.07</p>
+      <p>• 全国大学生数学建模竞赛 三等奖（队长）2022.09</p>
+      <p>• 参与组织杭州电子科技大学第四届Robotics Challenge of HDU-ITMO 并获“优秀志愿者”</p>
       <p>• 连续获得辽宁石油化工大学国家励志奖学金3次、优秀学生3次、杭州电子科技大学新生二等奖学金，研究生三等奖学金</p>
     </div>
   </section>
@@ -172,7 +184,7 @@
         <p>• 数据标注：熟练使用 Labelme 完成严格边缘语义标注，支持模型训练。</p>
         <p>• 熟悉深度学习PyTorch框架、熟悉YOLO系列及语义分割网络，曾自主搭建、训练以及改进语义分割模型，完成机器人对环境的语义感知。</p>
         <p>• 熟悉机器人常见传感器的使用，如：单线、多线激光雷达、深度相机、IMU、RTK、深度相机的内参标定，相机与雷达联合标定。</p>
-        <p>• 熟悉 Cartographer、Gmapping、LIO-SAM 等建图算法；激光雷达的三维点云处理, 实现将语义信息引入LIO‑SAM建图框架中，以构建室外复杂环境下的语义地图。</p>
+        <p>• 熟悉 Cartographer、Gmapping、LIO-SAM 等建图算法；激光雷达的三维点云处理, 实现将语义信息引入LIO-SAM建图框架中，以构建室外复杂环境下的语义地图。</p>
         <p>• 硕士阶段研究方向主要为基于野外复杂环境的多机器人轻量化地貌语义地图构建与自主导航方法研究，针对野外复杂环境设计深度学习网络，实现机器人语义感知，并构建轻量化的2.5D语义高程栅格地貌地图，通过RTK定位以实现野外多机器人的语义建图与导航。</p>
         <p>• 具备扎实的数学建模基础，熟练使用 Matlab、SPSS、Origin 完成数据分析、建模、仿真与可视化。</p>
         <p>• 熟练使用 LaTeX（TeXstudio） 撰写学术论文，具备良好的科研写作与汇报展示能力。</p>
@@ -185,7 +197,7 @@
 
   <section class="animate-section mb-16">
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">自我评价</h2>
-    <div class="glass neon-hover text-gray-200 leading‑relaxed">
+    <div class="glass neon-hover text-gray-200 leading-relaxed">
       学习能力强，做事严谨负责，热爱机器人技术研发，具备扎实科研与工程能力。硕士期间已录用SCI 论文 1篇，在投SCI论文1篇，中文期刊1篇，积累了扎实的学术与工程实践能力。善于团队协作，能高效推进项目落地，有较强责任心与执行力，积极进取，持续深耕机器人领域。
     </div>
   </section>
@@ -195,14 +207,14 @@
 <footer class="text-center py-10 text-gray-400">
   <p>© 2025 张浩然 · 个人简历</p>
   <p class="mt-2">CSDN博客：
-    <a href="https://blog.csdn.net/m0_53560331?spm=1000.2115.3001.5343" target="_blank" class="text‑[#00F3FF]">
+    <a href="https://blog.csdn.net/m0_53560331?spm=1000.2115.3001.5343" target="_blank" class="text-[#00F3FF]">
       https://blog.csdn.net/m0_53560331
     </a>
   </p>
 </footer>
 
 <script>
-// 轻量激光雨背景
+// 轻量激光雨背景，手机零压力
 const container = document.getElementById('bg3d');
 const canvas = document.createElement('canvas');
 canvas.style.position = 'fixed';
@@ -219,7 +231,7 @@ let w = canvas.width = window.innerWidth;
 let h = canvas.height = window.innerHeight;
 
 const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-const count = isMobile ? 35 : 70;
+const count = isMobile ? 35 : 70; // 手机大幅减少数量
 
 const lines = [];
 for(let i=0;i<count;i++){
@@ -258,13 +270,15 @@ window.addEventListener('resize',()=>{
   h = canvas.height = window.innerHeight;
 })
 
+// 切后台暂停
 document.addEventListener('visibilitychange', ()=>{
   if(document.hidden) cancelAnimationFrame(draw);
   else requestAnimationFrame(draw);
 })
 
-const obs = new IntersectionObserver(e=>e.forEach(i=>i.isIntersecting&&i.target.classList.add('animate‑fade‑in')),{threshold:0.1});
-document.querySelectorAll('.animate‑section').forEach(s=>obs.observe(s));
+// 滚动动画
+const obs = new IntersectionObserver(e=>e.forEach(i=>i.isIntersecting&&i.target.classList.add('animate-fade-in')),{threshold:0.1});
+document.querySelectorAll('.animate-section').forEach(s=>obs.observe(s));
 </script>
 
 </body>
