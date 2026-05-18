@@ -16,6 +16,7 @@
             color: #333;
             line-height: 1.6;
             padding: 20px;
+            word-break: break-all;
         }
         .resume-container {
             max-width: 1000px;
@@ -24,6 +25,7 @@
             padding: 40px;
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             border-radius: 8px;
+            overflow-wrap: break-word;
         }
         /* 头部信息 */
         .header {
@@ -86,15 +88,18 @@
         li {
             margin-bottom: 12px;
             font-size: 15px;
+            line-height: 1.7;
         }
         .item-title {
             font-weight: bold;
             margin-bottom: 4px;
         }
-        /* 项目经历 */
+        /* 项目经历：修复换行溢出 */
         .project-desc {
             padding-left: 15px;
             margin-top: 8px;
+            white-space: normal;
+            word-wrap: break-word;
         }
         .project-desc li {
             margin-bottom: 8px;
@@ -194,7 +199,7 @@
             </ul>
         </div>
 
-        <!-- 项目经历 -->
+        <!-- 项目经历（修复换行） -->
         <div class="section">
             <div class="section-title">项目经历</div>
             <ul>
