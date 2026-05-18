@@ -49,38 +49,46 @@
     }
     .nav-item {
       color: #d1d5db;
-      margin-left: 24px;
+      margin-left: 22px;
       text-decoration: none;
+      font-size: 15px;
     }
     .nav-item:hover {
       color: #00F3FF;
     }
+    .avatar-img {
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid #00F3FF;
+    }
   </style>
 </head>
+
 <body class="overflow-x-hidden">
 
 <!-- 3D粒子背景 -->
 <div id="bg3d" class="fixed top-0 left-0 w-full h-full -z-10 opacity-60"></div>
 
-<!-- 顶部导航栏（保留右上角跳转 + 新增CSDN） -->
+<!-- 顶部导航栏（可跳转 + CSDN） -->
 <nav class="fixed top-0 w-full z-50 backdrop-blur-xl bg-white/5 border-b border-white/10 py-4 px-6">
   <div class="max-w-5xl mx-auto flex justify-between items-center">
     <div class="text-[#00F3FF] font-bold text-lg">ZHANG HAORAN</div>
-    <div class="flex">
+    <div class="flex items-center">
       <a href="#edu" class="nav-item">教育背景</a>
       <a href="#paper" class="nav-item">科研成果</a>
       <a href="#award" class="nav-item">获奖经历</a>
       <a href="#project" class="nav-item">项目经历</a>
       <a href="#skill" class="nav-item">专业技能</a>
-      <a href="#self" class="nav-item">自我评价</a>
-      <!-- 这里替换成你自己的CSDN地址 -->
-      <a href="https://blog.csdn.net/你的CSDN用户名" target="_blank" class="nav-item text-[#7000FF]">CSDN博客</a>
+      <a href="https://blog.csdn.net/m0_53560331?spm=1000.2115.3001.5343" target="_blank" class="nav-item text-[#00F3FF]">CSDN博客</a>
     </div>
   </div>
 </nav>
 
-<div class="max-w-5xl mx-auto px-6 pt-28 pb-20">
+<div class="max-w-5xl mx-auto px-6 pt-32 pb-20">
   <div class="text-center mb-16">
+    <img src="zhr.jpg" class="avatar-img mx-auto mb-6" alt="照片">
     <h1 class="text-4xl text-[#00F3FF] font-bold mb-2">张浩然</h1>
     <p class="text-xl text-gray-300 mb-4">机器人技术研发工程师</p>
     <p class="text-gray-400">电话：17880151269 | 邮箱：zhanghr@hdu.edu.cn | 中共党员</p>
@@ -156,7 +164,7 @@
     </div>
   </section>
 
-  <section id="self" class="animate-section mb-16">
+  <section class="animate-section mb-16">
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">自我评价</h2>
     <div class="glass neon-hover text-gray-200 leading-relaxed">
       学习能力强，做事严谨负责，热爱机器人技术研发，具备扎实科研与工程能力。善于团队协作，能高效推进项目落地，有较强责任心与执行力，积极进取，持续深耕机器人领域。
@@ -166,7 +174,11 @@
 
 <footer class="text-center py-10 text-gray-400">
   <p>© 2025 张浩然 · 个人简历</p>
-  <p class="mt-2">CSDN博客：<a href="https://blog.csdn.net/你的CSDN用户名" target="_blank" class="text-[#00F3FF]">点击访问</a></p>
+  <p class="mt-2">CSDN博客：
+    <a href="https://blog.csdn.net/m0_53560331?spm=1000.2115.3001.5343" target="_blank" class="text-[#00F3FF]">
+      https://blog.csdn.net/m0_53560331
+    </a>
+  </p>
 </footer>
 
 <script>
@@ -196,5 +208,6 @@ setTimeout(type,800);
 const obs = new IntersectionObserver(e=>e.forEach(i=>i.isIntersecting&&i.target.classList.add('animate-fade-in')),{threshold:0.1});
 document.querySelectorAll('.animate-section').forEach(s=>obs.observe(s));
 </script>
+
 </body>
 </html>
