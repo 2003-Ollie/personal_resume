@@ -86,13 +86,18 @@
   </div>
 </nav>
 
+<!-- 👇 统一居中容器，恢复原来宽度 -->
+<div class="max-w-3xl mx-auto px-5 pt-28">
+
 <div class="text-center py-10 mb-12">
   <img src="zhr2.jpg" class="mx-auto mb-4 rounded-xl border-2 border-[#00F3FF]/70 shadow-lg shadow-[#00F3FF]/30 bg-black p-1 w-[120px] h-[120px] object-contain" alt="照片">
   
   <h1 class="text-4xl text-[#00F3FF] font-bold mb-2">张浩然</h1>
-  <div class="text-gray-400 text-sm space-y-1">
-    <p>👤出生年月：2003-02-21 &nbsp;&nbsp; 🚹性别：男</p>
-    <p>⭐政治面貌：中共党员 &nbsp;&nbsp; ✉️邮箱：zhanghr@hdu.edu.cn &nbsp;&nbsp; 📞电话：178-8015-1269（同微信）</p>
+  <p class="text-xl text-gray-300 mb-3">机器人技术研发工程师</p>
+
+  <div class="text-gray-400 text-sm space-y-1 max-w-xs mx-auto">
+    <p>2003-02-21 | 男 | 中共党员</p>
+    <p>zhanghr@hdu.edu.cn | 178-8015-1269</p>
   </div>
 </div>
 
@@ -109,13 +114,10 @@
 <section id="paper" class="animate-section mb-16">
   <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">科研成果</h2>
   <div class="glass neon-hover">
-    <!-- 第一组 -->
     <p class="text-[#00F3FF] font-bold mb-1">SCI 一作录用</p>
     <p class="text-white mb-4">《DMRINet: A lightweight real-time semantic segmentation network for unstructured terrain segmentation tasks》</p>
-    <!-- 第二组 -->
     <p class="text-[#00F3FF] font-bold mb-1">SCI期刊在投</p>
     <p class="text-gray-300 mb-4">《A Novel Terrain Semantic Map Building Framework for Field Robots》</p>
-    <!-- 第三组 -->
     <p class="text-[#00F3FF] font-bold mb-1">中文核心在投</p>
     <p class="text-gray-300">《一种面向非结构化室外场景的轻量级地貌语义感知方法》</p>
   </div>
@@ -193,7 +195,9 @@
       学习能力强，做事严谨负责，热爱机器人技术研发，具备扎实科研与工程能力。硕士期间已录用SCI 论文 1篇，在投SCI论文1篇，中文期刊1篇，积累了扎实的学术与工程实践能力。善于团队协作，能高效推进项目落地，有较强责任心与执行力，积极进取，持续深耕机器人领域。
     </div>
   </section>
+
 </div>
+<!-- 👆 统一居中容器结束 -->
 
 <footer class="text-center py-10 text-gray-400">
   <p>© 2025 张浩然 · 个人简历</p>
@@ -205,33 +209,6 @@
 </footer>
 
 <script>
-  
-// const container = document.getElementById('bg3d');
-// const scene = new THREE.Scene();
-// const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-// const renderer = new THREE.WebGLRenderer({alpha:true,antialias:true});
-// renderer.setSize(window.innerWidth, window.innerHeight);
-// container.appendChild(renderer.domElement);
-
-// const geometry = new THREE.SphereGeometry(2,32,32);
-// const points = [];
-// const pos = geometry.attributes.position.array;
-// for(let i=0;i<pos.length;i+=3) points.push(new THREE.Vector3(pos[i],pos[i+1],pos[i+2]));
-// const cloud = new THREE.Points(new THREE.BufferGeometry().setFromPoints(points), new THREE.PointsMaterial({color:0x00F3FF,size:0.02,transparent:true,opacity:0.8}));
-// scene.add(cloud); camera.position.z=4;
-
-// function animate(){requestAnimationFrame(animate); cloud.rotation.y+=0.002; cloud.rotation.x+=0.001; renderer.render(scene,camera);}
-// animate();
-
-// const term = document.getElementById('terminal');
-// const lines = ['$ initializing robot_system...','[OK] point_cloud_processing started','[OK] sensor_calibration loaded','[OK] semantic_segmentation ready','[OK] navigation_planner online','> System running successfully'];
-// let t='',l=0,c=0;
-// function type(){if(l<lines.length){if(c<lines[l].length){t+=lines[l][c]; term.innerText=t; c++; setTimeout(type,70);}else{t+='\n'; c=0; l++; setTimeout(type,200);}}}
-// setTimeout(type,800);
-
-// const obs = new IntersectionObserver(e=>e.forEach(i=>i.isIntersecting&&i.target.classList.add('animate-fade-in')),{threshold:0.1});
-// document.querySelectorAll('.animate-section').forEach(s=>obs.observe(s));
-
 const container = document.getElementById('bg3d');
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
@@ -240,26 +217,22 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(0x000000, 0);
 container.appendChild(renderer.domElement);
 
-// 1. 生成时空隧道流光粒子（纵深穿梭）
 const particlesCount = 800;
 const positions = new Float32Array(particlesCount * 3);
 const colors = new Float32Array(particlesCount * 3);
 const sizes = new Float32Array(particlesCount);
 
-// 青紫渐变配色
-const color1 = new THREE.Color(0x00F3FF); // 青
-const color2 = new THREE.Color(0x7000FF); // 紫
+const color1 = new THREE.Color(0x00F3FF);
+const color2 = new THREE.Color(0x7000FF);
 
 for (let i = 0; i < particlesCount; i++) {
   const i3 = i * 3;
-  // 隧道圆柱分布
   const angle = Math.random() * Math.PI * 2;
   const r = 3 + Math.random() * 6;
   positions[i3] = Math.cos(angle) * r;
   positions[i3 + 1] = Math.sin(angle) * r;
-  positions[i3 + 2] = Math.random() * 1200 - 600; // 纵深Z轴
+  positions[i3 + 2] = Math.random() * 1200 - 600;
 
-  // 青紫随机渐变
   const mix = Math.random();
   const finalColor = color1.clone().lerp(color2, mix);
   colors[i3] = finalColor.r;
@@ -288,13 +261,12 @@ scene.add(particleMesh);
 
 camera.position.z = 12;
 
-// 2. 粒子向前穿梭动画 + 轻微旋转
 function animate() {
   requestAnimationFrame(animate);
   const posArr = particleMesh.geometry.attributes.position.array;
   for (let i = 2; i < posArr.length; i += 3) {
-    posArr[i] += 0.8; // 向前流动速度
-    if (posArr[i] > 600) posArr[i] = -600; // 循环重置
+    posArr[i] += 0.8;
+    if (posArr[i] > 600) posArr[i] = -600;
   }
   particleMesh.geometry.attributes.position.needsUpdate = true;
   particleMesh.rotation.y += 0.0008;
@@ -302,12 +274,14 @@ function animate() {
 }
 animate();
 
-// 窗口自适应
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
+
+const obs = new IntersectionObserver(e=>e.forEach(i=>i.isIntersecting&&i.target.classList.add('animate-fade-in')),{threshold:0.1});
+document.querySelectorAll('.animate-section').forEach(s=>obs.observe(s));
 </script>
 
 </body>
