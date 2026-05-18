@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>张浩然 | 个人简历</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
   <style>
     body {
       background: #050505;
@@ -68,12 +67,12 @@
 
 <body class="overflow-x-hidden">
 
-<!-- 背景设置，具体的效果见末尾的script的位置 -->
+<!-- 背景 -->
 <div id="bg3d" class="fixed top-0 left-0 w-full h-full -z-10 opacity-60"></div>
 
-<!-- 顶部导航栏（可跳转 + CSDN） -->
+<!-- 顶部导航栏 -->
 <nav class="fixed top-0 w-full z-50 backdrop-blur-xl bg-white/5 border-b border-white/10 py-4 px-6">
-  <div class="max-w-5xl mx-auto flex justify-between items-center">
+  <div class="max-w-4xl mx-auto flex justify-between items-center">
     <div class="text-[#00F3FF] font-bold text-lg">ZHANG HAORAN</div>
     <div class="flex items-center">
       <a href="#edu" class="nav-item">教育背景</a>
@@ -86,11 +85,17 @@
   </div>
 </nav>
 
-<!-- 👇 统一居中容器，恢复原来宽度 -->
 <div class="max-w-4xl mx-auto px-5 pt-28">
 
 <div class="text-center py-10 mb-12">
-  <img src="zhr2.jpg" class="mx-auto mb-4 rounded-xl border-2 border-[#00F3FF]/70 shadow-lg shadow-[#00F3FF]/30 bg-black p-1 w-[120px] h-[120px] object-contain" alt="照片">
+  <!-- 头像：加了加载失败兜底 + 懒加载，手机不会丢失 -->
+  <img 
+    src="zhr2.jpg" 
+    alt="个人头像"
+    loading="lazy"
+    onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%2300F3FF%22/></svg>';this.style.objectFit='cover';"
+    class="mx-auto mb-4 rounded-xl border-2 border-[#00F3FF]/70 shadow-lg shadow-[#00F3FF]/30 bg-black p-1 w-[120px] h-[120px] object-contain"
+  >
   
   <h1 class="text-4xl text-[#00F3FF] font-bold mb-2">张浩然</h1>
 
@@ -196,7 +201,6 @@
   </section>
 
 </div>
-<!-- 👆 统一居中容器结束 -->
 
 <footer class="text-center py-10 text-gray-400">
   <p>© 2025 张浩然 · 个人简历</p>
@@ -208,7 +212,7 @@
 </footer>
 
 <script>
-// 激光雨 2D 轻量背景（极低性能消耗，手机流畅）
+// 轻量激光雨背景，手机零压力
 const container = document.getElementById('bg3d');
 const canvas = document.createElement('canvas');
 canvas.style.position = 'fixed';
@@ -224,35 +228,31 @@ const ctx = canvas.getContext('2d');
 let w = canvas.width = window.innerWidth;
 let h = canvas.height = window.innerHeight;
 
-// 激光线数量，手机自动更少
 const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-const count = isMobile ? 40 : 80;
+const count = isMobile ? 35 : 70; // 手机大幅减少数量
 
-// 存储每条激光
 const lines = [];
 for(let i=0;i<count;i++){
   lines.push({
     x: Math.random()*w,
     y: Math.random()*-h,
-    len: Math.random()*80+40,
-    speed: Math.random()*4+2,
-    hue: Math.random()>0.5 ? 180 : 260, // 青/紫
-    thick: Math.random()*1.2+0.3
+    len: Math.random()*70+30,
+    speed: Math.random()*3+1.5,
+    hue: Math.random()>0.5 ? 180 : 260,
+    thick: Math.random()*1+0.2
   })
 }
 
 function draw(){
-  ctx.fillStyle = 'rgba(0,0,0,0.08)';
+  ctx.fillStyle = 'rgba(0,0,0,0.07)';
   ctx.fillRect(0,0,w,h);
-
   lines.forEach(l=>{
     ctx.beginPath();
     ctx.moveTo(l.x, l.y);
     ctx.lineTo(l.x, l.y + l.len);
-    ctx.strokeStyle = `hsla(${l.hue},100%,60%,0.6)`;
+    ctx.strokeStyle = `hsla(${l.hue},100%,60%,0.55)`;
     ctx.lineWidth = l.thick;
     ctx.stroke();
-
     l.y += l.speed;
     if(l.y > h){
       l.y = -l.len;
@@ -263,17 +263,20 @@ function draw(){
 }
 draw();
 
-// 窗口适配
 window.addEventListener('resize',()=>{
   w = canvas.width = window.innerWidth;
   h = canvas.height = window.innerHeight;
 })
 
-// 切后台暂停，省电
+// 切后台暂停
 document.addEventListener('visibilitychange', ()=>{
   if(document.hidden) cancelAnimationFrame(draw);
   else requestAnimationFrame(draw);
 })
+
+// 滚动动画
+const obs = new IntersectionObserver(e=>e.forEach(i=>i.isIntersecting&&i.target.classList.add('animate-fade-in')),{threshold:0.1});
+document.querySelectorAll('.animate-section').forEach(s=>obs.observe(s));
 </script>
 
 </body>
