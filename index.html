@@ -1,212 +1,227 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>张浩然 | 个人简历</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>张浩然 | Robotics & SLAM Researcher</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <style>
+    body {
+      background: #050505;
+      color: #e3e3e3;
+      font-family: system-ui, monospace;
+      scroll-behavior: smooth;
+    }
 
-        body {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
-            color: #2d3748;
-            line-height: 1.7;
-            padding: 20px;
-            word-break: break-word;
-        }
+    .glass {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
 
-        .container {
-            max-width: 960px;
-            margin: 40px auto;
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-        }
+    .neon-hover:hover {
+      box-shadow: 0 0 15px #00F3FF, 0 0 30px #7000FF;
+      border-color: #00F3FF;
+    }
 
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding-bottom: 24px;
-            margin-bottom: 40px;
-            border-bottom: 1px solid #e2e8f0;
-        }
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
 
-        .header-text h1 {
-            font-size: 30px;
-            color: #1a202c;
-            margin-bottom: 8px;
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        .header-text p {
-            font-size: 15px;
-            color: #4a5568;
-            margin: 4px 0;
-        }
-
-        .avatar img {
-            width: 130px;
-            height: 130px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .section {
-            margin-bottom: 36px;
-        }
-
-        .section-title {
-            font-size: 19px;
-            font-weight: 600;
-            color: #2b6cb0;
-            margin-bottom: 18px;
-            padding-left: 12px;
-            border-left: 4px solid #2b6cb0;
-        }
-
-        .card {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 18px 20px;
-            margin-bottom: 14px;
-        }
-
-        .card h4 {
-            font-size: 16px;
-            color: #2d3748;
-            margin-bottom: 6px;
-        }
-
-        .card p {
-            font-size: 15px;
-            color: #4a5568;
-        }
-
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        li {
-            font-size: 15px;
-            color: #2d3748;
-            margin-bottom: 10px;
-            padding-left: 14px;
-            position: relative;
-        }
-
-        li::before {
-            content: "•";
-            color: #2b6cb0;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .skills span {
-            background: #e6f7ff;
-            color: #2b6cb0;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 14px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 30px 22px;
-            }
-            .header {
-                justify-content: center;
-                text-align: center;
-            }
-        }
-    </style>
+    .radar-bg {
+      background: radial-gradient(circle, rgba(112,0,255,0.15), transparent 70%);
+    }
+  </style>
 </head>
 
-<body>
-    <div class="container">
-        <div class="header">
-            <div class="header-text">
-                <h1>张浩然</h1>
-                <p>出生年月：2003-02-21｜性别：男｜中共党员</p>
-                <p>邮箱：zhanghr@hdu.edu.cn｜电话：17880151269</p>
-                <p>方向：机器人感知与导航 | SLAM | 语义分割 | 点云处理</p>
-            </div>
-            <div class="avatar">
-                <img src="zhr.jpg" alt="照片">
-            </div>
-        </div>
+<body class="overflow-x-hidden">
+  <!-- 3D 粒子球体背景 -->
+  <div id="bg3d" class="fixed top-0 left-0 w-full h-full -z-10 opacity-60"></div>
 
-        <div class="section">
-            <div class="section-title">教育背景</div>
-            <div class="card">
-                <h4>杭州电子科技大学｜控制科学与工程｜硕士（2024.09-至今）</h4>
-                <p>方向：机器人环境感知与导航、轻量化深度学习、语义分割、点云处理</p>
-            </div>
-            <div class="card">
-                <h4>辽宁石油化工大学｜自动化｜学士（2020.09-2024.06）</h4>
-                <p>GPA：8.51/10｜排名：1/170｜CET-6｜可熟练阅读英文文献</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">科研论文</div>
-            <ul>
-                <li>《DMRINet: A lightweight real-time semantic segmentation network》SCI一作录用</li>
-                <li>《A Novel Terrain Semantic Map Building Framework》SCI投稿中</li>
-                <li>《一种面向非结构化室外场景的轻量级地貌语义感知方法》中文核心投稿中</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <div class="section-title">获奖经历</div>
-            <ul>
-                <li>研究生人工智能创新大赛 二等奖（队长）</li>
-                <li>中国研究生机器人创新设计大赛 三等奖</li>
-                <li>全国大学生数学建模竞赛 三等奖（队长）</li>
-                <li>辽宁省大学生数学建模竞赛 一等奖（队长）</li>
-                <li>国家励志奖学金 ×3、校级一等奖学金 ×3</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <div class="section-title">项目经历</div>
-            <div class="card">
-                <h4>复杂场景运输机器人导航与规划技术研发（100万企业项目）</h4>
-                <p>负责点云滤波、反光柱检测、厘米级精准停车；优化梯形加减速与路径规划；基于LIO-SAM实现激光SLAM；改进A*算法与B样条平滑；完成调度框架与文档输出。</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">专业技能</div>
-            <div class="skills">
-                <span>C/C++</span><span>Python</span><span>ROS</span><span>SLAM</span>
-                <span>LIO-SAM</span><span>PCL</span><span>OpenCV</span><span>PyTorch</span>
-                <span>YOLO</span><span>语义分割</span><span>激光雷达</span><span>RTK/IMU</span>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">自我评价</div>
-            <p>做事严谨细致，学习能力强，擅长机器人感知与导航开发，具备扎实科研与工程能力。热爱技术，善于团队协作，能高效推进项目落地。</p>
-        </div>
+  <!-- 导航栏 -->
+  <nav class="fixed top-0 w-full glass z-50 px-4 py-3">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <h1 class="text-[#00F3FF] font-bold">ZHANG HAORAN • SLAM</h1>
+      <div class="flex gap-4 text-sm">
+        <a href="#home" class="hover:text-[#00F3FF]">Home</a>
+        <a href="#edu" class="hover:text-[#00F3FF]">Education</a>
+        <a href="#paper" class="hover:text-[#00F3FF]">Research</a>
+        <a href="#project" class="hover:text-[#00F3FF]">Project</a>
+        <a href="#skill" class="hover:text-[#00F3FF]">Skills</a>
+      </div>
     </div>
+  </nav>
+
+  <!-- 首页 -->
+  <section id="home" class="h-screen flex items-center justify-center px-4">
+    <div class="max-w-4xl w-full text-center">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">
+        <span class="text-[#00F3FF]">张浩然</span>
+        <span class="text-white ml-2">Robotics / SLAM Researcher</span>
+      </h1>
+      <p class="text-gray-400 mb-10">机器人感知与导航 | 激光SLAM | 语义分割 | 点云处理</p>
+
+      <!-- 终端 -->
+      <div class="mx-auto max-w-xl bg-black/70 border border-[#00F3FF]/30 rounded p-4 text-left h-40 overflow-hidden">
+        <pre id="terminal" class="text-[#00F3FF] text-sm"></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 教育 -->
+  <section id="edu" class="py-20 px-4 animate-section">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">Education</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass p-6 rounded-2xl neon-hover transition">
+          <h3 class="text-white font-bold">杭州电子科技大学 • 硕士</h3>
+          <p class="text-[#00F3FF]">控制科学与工程 | 2024-至今</p>
+          <p class="text-gray-400 mt-2">方向：机器人感知与导航、语义分割、点云处理</p>
+        </div>
+        <div class="glass p-6 rounded-2xl neon-hover transition">
+          <h3 class="text-white font-bold">辽宁石油化工大学 • 学士</h3>
+          <p class="text-[#00F3FF]">自动化 | 2020-2024</p>
+          <p class="text-gray-400 mt-2">GPA 8.51/10 | 排名 1/170 | CET-6</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 科研论文 -->
+  <section id="paper" class="py-20 px-4 animate-section">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">Research Papers</h2>
+      <div class="glass p-8 rounded-2xl">
+        <div class="mb-4">
+          <h3 class="text-[#00F3FF] font-bold">SCI 一作录用</h3>
+          <p class="text-white mt-1">DMRINet: A lightweight real-time semantic segmentation network</p>
+        </div>
+        <p class="text-gray-300">• SCI 期刊在投：A Novel Terrain Semantic Map Building Framework</p>
+        <p class="text-gray-300">• 中文核心在投：轻量级地貌语义感知方法</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 项目 -->
+  <section id="project" class="py-20 px-4 animate-section">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">Projects</h2>
+      <div class="glass p-8 rounded-2xl relative overflow-hidden neon-hover transition">
+        <h3 class="text-xl font-bold text-white">运输机器人导航与规划技术研发</h3>
+        <p class="text-gray-300 mt-2">百万级企业项目 | 激光SLAM导航系统</p>
+        <ul class="mt-4 text-gray-200 space-y-1">
+          <li>• 厘米级精准停车与自动回充</li>
+          <li>• 多条件约束点云滤波与反光柱检测</li>
+          <li>• LIO-SAM 激光SLAM建图与定位</li>
+          <li>• A* 路径规划 + B样条平滑优化</li>
+        </ul>
+        <div class="flex gap-2 mt-6 flex-wrap">
+          <span class="px-2 py-1 rounded-full bg-[#00F3FF]/20 text-[#00F3FF] text-xs">ROS</span>
+          <span class="px-2 py-1 rounded-full bg-[#7000FF]/20 text-[#7000FF] text-xs">SLAM</span>
+          <span class="px-2 py-1 rounded-full bg-[#00F3FF]/20 text-[#00F3FF] text-xs">LIO-SAM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技能 -->
+  <section id="skill" class="py-20 px-4 animate-section">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">Skills</h2>
+      <div class="flex flex-wrap gap-3">
+        <span class="px-4 py-2 rounded-full bg-white/10 hover:bg-[#00F3FF]/20 hover:text-[#00F3FF] transition">C++</span>
+        <span class="px-4 py-2 rounded-full bg-white/10 hover:bg-[#00F3FF]/20 hover:text-[#00F3FF] transition">Python</span>
+        <span class="px-4 py-2 rounded-full bg-white/10 hover:bg-[#00F3FF]/20 hover:text-[#00F3FF] transition">ROS</span>
+        <span class="px-4 py-2 rounded-full bg-white/10 hover:bg-[#00F3FF]/20 hover:text-[#00F3FF] transition">PyTorch</span>
+        <span class="px-4 py-2 rounded-full bg-white/10 hover:bg-[#00F3FF]/20 hover:text-[#00F3FF] transition">YOLO</span>
+        <span class="px-4 py-2 rounded-full bg-white/10 hover:bg-[#00F3FF]/20 hover:text-[#00F3FF] transition">LIO-SAM</span>
+        <span class="px-4 py-2 rounded-full bg-white/10 hover:bg-[#00F3FF]/20 hover:text-[#00F3FF] transition">点云处理</span>
+        <span class="px-4 py-2 rounded-full bg-white/10 hover:bg-[#00F3FF]/20 hover:text-[#00F3FF] transition">A* 算法</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="relative py-16 radar-bg">
+    <div class="text-center text-gray-400">
+      <p>Email: zhanghr@hdu.edu.cn</p>
+      <p class="mt-6 text-xs text-white/30">© 2025 Zhang Haoran • Robotics & SLAM</p>
+    </div>
+  </footer>
+
+  <script>
+    // 3D 粒子球体
+    const container = document.getElementById('bg3d');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x000000, 0);
+    container.appendChild(renderer.domElement);
+
+    const geometry = new THREE.SphereGeometry(2, 32, 32);
+    const points = [];
+    const pos = geometry.attributes.position.array;
+    for (let i = 0; i < pos.length; i += 3) {
+      points.push(new THREE.Vector3(pos[i], pos[i + 1], pos[i + 2]));
+    }
+    const cloudGeo = new THREE.BufferGeometry().setFromPoints(points);
+    const cloudMat = new THREE.PointsMaterial({ color: 0x00F3FF, size: 0.02, transparent: true, opacity: 0.8 });
+    const particleCloud = new THREE.Points(cloudGeo, cloudMat);
+    scene.add(particleCloud);
+    camera.position.z = 4;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      particleCloud.rotation.y += 0.002;
+      particleCloud.rotation.x += 0.001;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // 终端打字
+    const terminal = document.getElementById('terminal');
+    const lines = [
+      '$ initializing slam_system...',
+      '[OK] point_cloud_processing started',
+      '[OK] lidar_calibration loaded',
+      '[OK] semantic_segmentation ready',
+      '[OK] navigation_planner online',
+      '> System: SLAM Core Running'
+    ];
+    let text = '';
+    let l = 0, c = 0;
+    function type() {
+      if (l < lines.length) {
+        if (c < lines[l].length) {
+          text += lines[l][c];
+          terminal.innerText = text;
+          c++;
+          setTimeout(type, 70);
+        } else {
+          text += '\n';
+          c = 0;
+          l++;
+          setTimeout(type, 200);
+        }
+      }
+    }
+    setTimeout(type, 800);
+
+    // 滚动动画
+    const sections = document.querySelectorAll('.animate-section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('animate-fade-in');
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(s => observer.observe(s));
+  </script>
 </body>
 </html>
