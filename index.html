@@ -88,13 +88,12 @@
 <div class="max-w-4xl mx-auto px-5 pt-28">
 
 <div class="text-center py-10 mb-12">
-  <!-- 头像：加了加载失败兜底 + 懒加载，手机不会丢失 -->
   <img 
-    src="zhr2.jpg" 
+    src="./assets/avatar.jpg"
     alt="个人头像"
-    loading="lazy"
-    onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%2300F3FF%22/></svg>';this.style.objectFit='cover';"
-    class="mx-auto mb-4 rounded-xl border-2 border-[#00F3FF]/70 shadow-lg shadow-[#00F3FF]/30 bg-black p-1 w-[120px] h-[120px] object-contain"
+    class="mx-auto mb-4 rounded-xl border-2 border-[#00F3FF]/70 shadow-lg shadow-[#00F3FF]/30 bg-black p-1 w-[120px] h-[120px] object-cover"
+    style="display:block;"
+    onerror="this.style.display='none';"
   >
   
   <h1 class="text-4xl text-[#00F3FF] font-bold mb-2">张浩然</h1>
