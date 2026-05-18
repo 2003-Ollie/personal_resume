@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张浩然 - 个人简历 | 机器人感知与导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .resume-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        /* 头部信息 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #222;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header-info h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        .header-info p {
+            margin: 8px 0;
+            font-size: 15px;
+        }
+        .header-info p span {
+            margin-right: 20px;
+        }
+        .header-img img {
+            width: 140px;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+        /* 通用板块样式 */
+        .section {
+            margin-bottom: 35px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            border-left: 4px solid #222;
+            padding-left: 12px;
+            margin-bottom: 18px;
+            color: #222;
+        }
+        /* 教育背景 */
+        .edu-item {
+            margin-bottom: 16px;
+        }
+        .edu-top {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .edu-desc {
+            margin-top: 6px;
+            padding-left: 10px;
+            font-size: 15px;
+        }
+        /* 列表通用 */
+        ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+        li {
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        .item-title {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        /* 项目经历 */
+        .project-desc {
+            padding-left: 15px;
+            margin-top: 8px;
+        }
+        .project-desc li {
+            margin-bottom: 8px;
+        }
+        /* 技能 */
+        .skill-list li {
+            line-height: 1.7;
+        }
+        /* 自我评价 */
+        .self-desc {
+            padding-left: 10px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        /* 响应式适配手机 */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-img {
+                margin-top: 20px;
+            }
+            .resume-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- 头部个人信息 -->
+        <div class="header">
+            <div class="header-info">
+                <h1>张浩然</h1>
+                <p>
+                    <span>📅 出生年月：2003-02-21</span>
+                    <span>👤 性别：男</span>
+                    <span>🎖️ 政治面貌：中共党员</span>
+                </p>
+                <p>
+                    <span>📧 邮箱：zhanghr@hdu.edu.cn</span>
+                    <span>📱 电话：178-8015-1269（同微信）</span>
+                </p>
+            </div>
+            <div class="header-img">
+                <!-- 把下面src替换成你的证件照图片地址即可 -->
+                <img src="your-photo.jpg" alt="张浩然证件照">
+            </div>
+        </div>
+
+        <!-- 教育背景 -->
+        <div class="section">
+            <div class="section-title">教育背景</div>
+            <div class="edu-item">
+                <div class="edu-top">
+                    <span>2024.09 - 至今 &nbsp;&nbsp; 杭州电子科技大学 &nbsp;&nbsp; 控制科学与工程 &nbsp;&nbsp; 硕士</span>
+                </div>
+                <div class="edu-desc">
+                    研究方向：机器人环境感知与导航、轻量化深度学习、语义分割、点云处理
+                </div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-top">
+                    <span>2020.09 - 2024.06 &nbsp;&nbsp; 辽宁石油化工大学 &nbsp;&nbsp; 自动化 &nbsp;&nbsp; 工学学士</span>
+                </div>
+                <div class="edu-desc">
+                    GPA：8.51/10 &nbsp;&nbsp; 排名：1/170 &nbsp;&nbsp; 英语：CET-6(474)，可熟练阅读英文文献、交流沟通
+                </div>
+            </div>
+        </div>
+
+        <!-- 学习获奖经历 -->
+        <div class="section">
+            <div class="section-title">学习获奖经历</div>
+            <ul>
+                <li>
+                    <div class="item-title">科研论文</div>
+                    <ul class="project-desc">
+                        <li>◆ 论文《DMRINet: A lightweight real-time semantic segmentation network for unstructured terrain segmentation tasks》(SCI一作录用)</li>
+                        <li>◆ 论文《A Novel Terrain Semantic Map Building Framework for Field Robots》(SCI投稿中)</li>
+                        <li>◆ 论文《一种面向非结构化室外场景的轻量级地貌语义感知方法》(中文核心投稿中)</li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="item-title">奖项荣誉</div>
+                    <ul class="project-desc">
+                        <li>◆ 杭州电子科技大学第二届研究生人工智能创新大赛 二等奖（队长）｜2025.09<br>内容：开发融合大模型语义交互能力的智能服务机器人系统。负责YOLO行人感知、卡尔曼滤波轨迹优化、ROS激光SLAM与多传感器融合导航，协作完成大模型RAG-LLM语义交互，实现机器人智能跟随与引导导航。</li>
+                        <li>◆ 第七届中国研究生机器人创新设计大赛 三等奖｜2025.09</li>
+                        <li>◆ 辽宁省大学生数学建模竞赛 一等奖（队长）｜2022.07</li>
+                        <li>◆ 全国大学生数学建模竞赛 三等奖（队长）｜2022.09</li>
+                        <li>◆ 全国大学生英语竞赛（NECCS）三等奖｜2023.06</li>
+                        <li>◆ 参与组织杭州电子科技大学第四届Robotics Challenge of HDU-ITMO并获“优秀志愿者”</li>
+                        <li>◆ 连续获得辽宁石油化工大学国家励志奖学金3次、优秀学生3次、杭州电子科技大学新生二等奖学金、研究生三等奖学金</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 项目经历 -->
+        <div class="section">
+            <div class="section-title">项目经历</div>
+            <ul>
+                <li>
+                    <div class="item-title">复杂场景下的运输机器人导航与规划技术研发（2023.06-2025.06，100万元企业技术攻关项目）</div>
+                    <div class="project-desc">
+                        <b>项目简介：</b>本项目旨在开发一套室内外复杂运维环境下大型运输车的定位与导航系统，包括：多传感器数据融合、高精度定位、雨雾环境下导航、路径规划与导航等。
+                        <br><br>
+                        <b>主要负责：</b>
+                        <li>1) 针对AGV点云干扰问题，设计多条件约束点云滤波与圆柱拟合的反光柱检测算法，消除反光条噪声与误判，支撑AGV厘米级精准停车与自动回充。</li>
+                        <li>2) 优化梯形加减速与路径预读速度规划，解决速度间断、减速效率低问题，提升导航流畅度与实车效率。</li>
+                        <li>3) 基于LIO‑SAM完成激光SLAM建图，实现室内外复杂环境稳定定位与建图。</li>
+                        <li>4) 优化A*算法，针对园区场景及运输路线要求，结合车道线信息和调度点信息优化A*规划算法。并利用B样条曲线进行路径平滑，运输的参考路线。同时，提供路线文件加载和自主规划两种选择，以便适应更加复杂的使用需求。</li>
+                        <li>5) 梳理调度系统框架，完善可视化界面与仿真流程，输出全套开发文档，保障项目迭代维护。</li>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 专业技能 -->
+        <div class="section">
+            <div class="section-title">专业技能</div>
+            <ul class="skill-list">
+                <li>◆ 编程语言与工具：熟悉C/C++、Python；熟悉ROS开发、RViz可视化、URDF建模、Docker镜像管理。</li>
+                <li>◆ 视觉与点云处理：熟悉OpenCV、PCL等开源库的使用、熟悉图像检测、特征提取、激光点云预处理、NDT/ICP配准。</li>
+                <li>◆ 数据标注：熟练使用Labelme完成严格边缘语义标注，支持模型训练。</li>
+                <li>◆ 深度学习：熟悉PyTorch框架、YOLO系列及语义分割网络，曾自主搭建、训练以及改进语义分割模型，完成机器人对环境的语义感知。</li>
+                <li>◆ 传感器与标定：熟悉单线/多线激光雷达、深度相机、IMU、RTK等传感器使用；掌握内参标定、相机雷达联合标定。</li>
+                <li>◆ 建图导航：熟悉Cartographer、Gmapping、LIO‑SAM等建图算法；实现语义信息引入LIO‑SAM，构建室外复杂环境语义地图。</li>
+                <li>◆ 研究方向：野外多机器人轻量化地貌语义地图构建与自主导航，实现2.5D语义高程栅格地图，RTK定位完成野外语义建图导航。</li>
+                <li>◆ 其他工具：Matlab、SPSS、Origin数据分析；LaTeX论文排版；STM32、Keil5硬件开发；Office办公套件。</li>
+            </ul>
+        </div>
+
+        <!-- 自我评价 -->
+        <div class="section">
+            <div class="section-title">自我评价</div>
+            <div class="self-desc">
+                做事严谨细致，具备快速学习能力与独立解决问题的能力。科研与竞赛中善于攻坚克难、主动探索新技术，动手能力强。拥有良好的团队协作意识，能够通过高效沟通推进项目进展；硕士期间已录用SCI论文1篇，在投SCI论文1篇，中文期刊1篇，积累了扎实的学术与工程实践能力。
+            </div>
+        </div>
+    </div>
+</body>
+</html>
