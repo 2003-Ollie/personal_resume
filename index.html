@@ -47,13 +47,39 @@
       color: #00F3FF;
       transform: scale(1.05);
     }
+    .nav-item {
+      color: #d1d5db;
+      margin-left: 24px;
+      text-decoration: none;
+    }
+    .nav-item:hover {
+      color: #00F3FF;
+    }
   </style>
 </head>
 <body class="overflow-x-hidden">
 
+<!-- 3D粒子背景 -->
 <div id="bg3d" class="fixed top-0 left-0 w-full h-full -z-10 opacity-60"></div>
 
-<div class="max-w-5xl mx-auto px-6 py-20">
+<!-- 顶部导航栏（保留右上角跳转 + 新增CSDN） -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-xl bg-white/5 border-b border-white/10 py-4 px-6">
+  <div class="max-w-5xl mx-auto flex justify-between items-center">
+    <div class="text-[#00F3FF] font-bold text-lg">ZHANG HAORAN</div>
+    <div class="flex">
+      <a href="#edu" class="nav-item">教育背景</a>
+      <a href="#paper" class="nav-item">科研成果</a>
+      <a href="#award" class="nav-item">获奖经历</a>
+      <a href="#project" class="nav-item">项目经历</a>
+      <a href="#skill" class="nav-item">专业技能</a>
+      <a href="#self" class="nav-item">自我评价</a>
+      <!-- 这里替换成你自己的CSDN地址 -->
+      <a href="https://blog.csdn.net/你的CSDN用户名" target="_blank" class="nav-item text-[#7000FF]">CSDN博客</a>
+    </div>
+  </div>
+</nav>
+
+<div class="max-w-5xl mx-auto px-6 pt-28 pb-20">
   <div class="text-center mb-16">
     <h1 class="text-4xl text-[#00F3FF] font-bold mb-2">张浩然</h1>
     <p class="text-xl text-gray-300 mb-4">机器人技术研发工程师</p>
@@ -63,7 +89,7 @@
     </div>
   </div>
 
-  <section class="animate-section mb-16">
+  <section id="edu" class="animate-section mb-16">
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">教育背景</h2>
     <div class="glass neon-hover">
       <p class="font-bold text-white text-lg">杭州电子科技大学 | 硕士 控制科学与工程 | 2024.09-至今</p>
@@ -73,7 +99,7 @@
     </div>
   </section>
 
-  <section class="animate-section mb-16">
+  <section id="paper" class="animate-section mb-16">
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">科研成果</h2>
     <div class="glass neon-hover">
       <p class="text-[#00F3FF] font-bold">SCI 一作录用</p>
@@ -83,7 +109,7 @@
     </div>
   </section>
 
-  <section class="animate-section mb-16">
+  <section id="award" class="animate-section mb-16">
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">获奖经历</h2>
     <div class="glass neon-hover text-gray-200 space-y-3">
       <p>• 研究生人工智能创新大赛 二等奖（队长）</p>
@@ -94,7 +120,7 @@
     </div>
   </section>
 
-  <section class="animate-section mb-16">
+  <section id="project" class="animate-section mb-16">
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">项目经历</h2>
     <div class="glass neon-hover">
       <p class="text-xl font-bold text-white">运输机器人导航与规划技术研发</p>
@@ -109,7 +135,7 @@
     </div>
   </section>
 
-  <section class="animate-section mb-16">
+  <section id="skill" class="animate-section mb-16">
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">专业技能</h2>
     <div class="glass neon-hover">
       <div>
@@ -130,7 +156,7 @@
     </div>
   </section>
 
-  <section class="animate-section mb-16">
+  <section id="self" class="animate-section mb-16">
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">自我评价</h2>
     <div class="glass neon-hover text-gray-200 leading-relaxed">
       学习能力强，做事严谨负责，热爱机器人技术研发，具备扎实科研与工程能力。善于团队协作，能高效推进项目落地，有较强责任心与执行力，积极进取，持续深耕机器人领域。
@@ -140,6 +166,7 @@
 
 <footer class="text-center py-10 text-gray-400">
   <p>© 2025 张浩然 · 个人简历</p>
+  <p class="mt-2">CSDN博客：<a href="https://blog.csdn.net/你的CSDN用户名" target="_blank" class="text-[#00F3FF]">点击访问</a></p>
 </footer>
 
 <script>
