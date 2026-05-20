@@ -89,25 +89,26 @@
 
 
 <div style="text-align: center; padding: 20px 0 35px; margin-bottom: 40px;">
-  <!-- 容器大小不变，还是 80px -->
-  <div style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid #00F3FF; margin: 0 auto 18px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: transparent;">
-    <!-- 只有这里：图片改成 85% 大小，自动居中缩小 -->
+  <div style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid #00F3FF; margin: 0 auto 18px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+    <!-- object-fit:contain 保证图片完整不裁剪 -->
     <img 
       src="zhr3.png" 
       alt="头像"
       loading="lazy"
       decoding="async"
-      style="width: 85%; height: 85%; object-fit: cover; border-radius: 50%;">
+      style="width: 82%; height: 82%; object-fit: contain; border-radius: 50%;">
   </div>
 
   <p style="font-size: 24px; color: #ffffff; margin: 0 0 8px 0;">Hello,</p>
   <h1 style="font-size: 52px; color: #00F3FF; font-weight: bold; margin: 0 0 14px 0;">I'm 张浩然</h1>
   
-  <div style="font-size: 22px; color: #aaaaaa; line-height: 1.7;">
-    <p style="margin:0;">2003‑02‑21 | 男 | 中共党员</p>
-    <p style="margin:0;">zhanghr@hdu.edu.cn | 178‑8015‑1269</p>
+  <div style="font-size: 22px; color: #aaaaaa; line-height: 1.7; width: 100%;">
+    <p style="margin:0; letter-spacing: 4px;">2003‑02‑21 | 男 | 中共党员</p>
+    <p style="margin:0; letter-spacing: 4px;">zhanghr@hdu.edu.cn | 178‑8015‑1269</p>
   </div>
 </div>
+
+  
   <section id="edu" class="animate-section mb-16">
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">教育背景</h2>
     <div class="glass neon-hover">
