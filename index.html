@@ -104,21 +104,42 @@
   </div>
   
 </div> -->
-  <div class="text-center py-10 mb-12">
-  <!-- 头像：优化大小+发光，和整体风格统一 -->
+ <div class="text-center py-16 mb-16">
+  <!-- 圆形头像，带霓虹发光 -->
   <img 
-    src="zhr2.jpg" 
+    src="zhr3.png"
     alt="个人头像"
     loading="lazy"
     onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%2300F3FF%22/></svg>';this.style.objectFit='cover';"
-    class="mx-auto mb-5 rounded-xl border-2 border-[#00F3FF]/70 shadow-lg shadow-[#00F3FF]/40 bg-black p-1 w-[140px] h-[140px] object-contain"
+    class="mx-auto mb-6 rounded-full border-2 border-[#00F3FF]/70 shadow-lg shadow-[#00F3FF]/40 bg-black p-1 w-[160px] h-[160px] object-cover"
   >
-  
-  <!-- 姓名：字号、霓虹配色优化 -->
-  <h1 class="text-5xl text-[#00F3FF] font-bold mb-4 tracking-wide">张浩然</h1>
 
-  <!-- 个人信息：两行紧凑排版，更干净 -->
-  <div class="text-gray-300 text-lg space-y-2 max-w-md mx-auto">
+  <!-- 副标题 -->
+  <p class="text-3xl text-white mb-4">Hello,</p>
+
+  <!-- 主姓名，镂空霓虹字体，匹配你整体风格 -->
+  <h1 class="text-6xl font-bold mb-8 tracking-wider" style="color:transparent;-webkit-text-stroke:1px #00F3FF;">
+    I'm 张浩然
+  </h1>
+
+  <!-- 底部标签行，和参考图一致 -->
+  <div class="flex items-center justify-center gap-6 text-gray-300 text-lg">
+    <span class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-white"></span>
+      机器人研发工程师
+    </span>
+    <span class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-white"></span>
+      感知与导航算法
+    </span>
+    <span class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-white"></span>
+      硕士研究生
+    </span>
+  </div>
+
+  <!-- 个人联系信息 -->
+  <div class="mt-8 text-gray-400 text-base space-y-1">
     <p>2003‑02‑21 | 男 | 中共党员</p>
     <p>zhanghr@hdu.edu.cn &nbsp;|&nbsp; 178‑8015‑1269</p>
   </div>
