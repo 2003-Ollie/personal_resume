@@ -88,19 +88,22 @@
 <div class="max-w-4xl mx-auto px-5 pt-28">
 
 
-<div style="text-align: center; padding: 20px 0 40px; margin-bottom: 40px;">
-  <!-- 外层圆形边框容器，固定大小+溢出隐藏 -->
-  <div style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid #00F3FF; margin: 0 auto 20px; overflow: hidden;">
+<div style="text-align: center; padding: 20px 0 35px; margin-bottom: 40px;">
+  <!-- 缩小外层圆形容器，头像同步缩小 -->
+  <div style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid #00F3FF; margin: 0 auto 18px; overflow: hidden;">
+    <!-- 图片添加加载优化属性，极速渲染 -->
     <img 
       src="zhr3.png" 
       alt="头像"
+      loading="lazy"
+      decoding="async"
       style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
   </div>
 
-  <p style="font-size: 26px; color: #ffffff; margin: 0 0 10px 0;">Hello,</p>
-  <h1 style="font-size: 56px; color: #00F3FF; font-weight: bold; margin: 0 0 16px 0;">I'm 张浩然</h1>
+  <p style="font-size: 24px; color: #ffffff; margin: 0 0 8px 0;">Hello,</p>
+  <h1 style="font-size: 52px; color: #00F3FF; font-weight: bold; margin: 0 0 14px 0;">I'm 张浩然</h1>
   
-  <div style="font-size: 24px; color: #aaaaaa; line-height: 1.7;">
+  <div style="font-size: 22px; color: #aaaaaa; line-height: 1.7;">
     <p style="margin:0;">2003‑02‑21 | 男 | 中共党员</p>
     <p style="margin:0;">zhanghr@hdu.edu.cn | 178‑8015‑1269</p>
   </div>
