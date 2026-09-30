@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>张浩然 | 个人简历</title>
-  <link rel="stylesheet" href="style.css">
   <style>
     body {
       background: #050505;
@@ -62,20 +61,21 @@
       border-radius: 12px;
       border: 1px solid #00F3FF;
     }
+    .animate-section{
+      opacity:0;
+    }
   </style>
 </head>
-
 <body class="overflow-x-hidden">
-
 <!-- 背景 -->
 <div id="bg3d" class="fixed top-0 left-0 w-full h-full -z-10 opacity-60"></div>
-
 <!-- 顶部导航栏 -->
 <nav class="fixed top-0 w-full z-50 backdrop-blur-xl bg-white/5 border-b border-white/10 py-4 px-6">
   <div class="max-w-4xl mx-auto flex justify-between items-center">
     <div class="text-[#00F3FF] font-bold text-lg">ZHANG HAORAN</div>
     <div class="flex items-center">
       <a href="#edu" class="nav-item">教育背景</a>
+      <a href="#intern" class="nav-item">实习经历</a>
       <a href="#paper" class="nav-item">科研成果</a>
       <a href="#award" class="nav-item">获奖经历</a>
       <a href="#project" class="nav-item">项目经历</a>
@@ -84,21 +84,17 @@
     </div>
   </div>
 </nav>
-
 <div class="max-w-4xl mx-auto px-5 pt-28">
-
-
 <div style="text-align: center; padding: 20px 0 35px; margin-bottom: 40px;">
-  <!-- 蓝色外框整体放大为100px，图片同步放大 -->
+  <!-- 头像改为 zhr3.jpg -->
   <div style="width: 130px; height: 130px; border-radius: 50%; border: 2px solid #00F3FF; margin: 0 auto 18px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
     <img 
-      src="zhr2.jpg" 
+      src="zhr3.jpg" 
       alt="头像"
       loading="lazy"
       decoding="async"
       style="width: 92%; height: 92%; object-fit: contain; border-radius: 50%;">
   </div>
-
   <p style="font-size: 24px; color: #ffffff; margin: 0 0 8px 0;">Hello,</p>
   <h1 style="font-size: 40px; color: #00F3FF; font-weight: bold; margin: 0 0 14px 0;">I'm 张浩然</h1>
   
@@ -107,7 +103,6 @@
     <p>zhanghr@hdu.edu.cn | 178-8015-1269</p>
   </div>
 </div>
-
   
   <section id="edu" class="animate-section mb-16">
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">教育背景</h2>
@@ -120,13 +115,26 @@
     </div>
   </section>
 
+<section id="intern" class="animate-section mb-16">
+  <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">实习经历</h2>
+  <div class="glass neon-hover">
+    <p class="font-bold text-white text-lg">申昊科技｜具身智能算法实习生 | 2025.06‑2025.09</p>
+    <p class="text-[#00F3FF] mt-1">巡检机器人感知与导航算法开发</p>
+    <ul class="text-gray-200 mt-4 space-y-2">
+      <li>• 负责轮式巡检机器人ROS2‑Humble平台感知与导航模块开发、问题定位与实车调试。</li>
+      <li>• 基于Point‑lio完成多传感器融合建图；完成雷达‑相机外参标定，部署Patchwork++地面分割。</li>
+      <li>• 针对变电站场景优化Nav2导航栈，调优TEB、DWB局部规划器，处理多网卡DDS通讯异常。</li>
+      <li>• 编写功能脚本、launch部署文件，输出调试记录文档，支撑样机外场测试。</li>
+    </ul>
+  </div>
+</section>
+
 <section id="paper" class="animate-section mb-16">
   <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">科研成果</h2>
   <div class="glass neon-hover">
-    <p class="text-[#00F3FF] font-bold mb-1">SCI 一作录用</p>
-    <p class="text-white mb-4">第一作者发表 SCI 期刊论文 1 篇（KSII Transactions on Internet and Information Systems, JCR Q4）,《DMRINet: A lightweight real-time semantic segmentation network for unstructured terrain segmentation tasks》, 围绕非结构化的野外轻量化的语义实时感知展开研究。</p>
-    <p class="text-[#00F3FF] font-bold mb-1">SCI期刊在投</p>
-    <p class="text-gray-300 mb-4">《A Novel Terrain Semantic Map Building Framework for Field Robots》</p>
+    <p class="text-[#00F3FF] font-bold mb-1">SCI 一作录用 ×2</p>
+    <p class="text-white mb-4">第一作者发表 SCI 期刊论文 1 篇（KSII Transactions on Internet and Information Systems, JCR Q4）,《DMRINet: A lightweight real‑time semantic segmentation network for unstructured terrain segmentation tasks》, 围绕非结构化的野外轻量化的语义实时感知展开研究。</p>
+    <p class="text-white mb-4">第一作者 SCI 录用：《A Novel Terrain Semantic Map Building Framework for Field Robots》</p>
     <p class="text-[#00F3FF] font-bold mb-1">中文核心在投</p>
     <p class="text-gray-300">《一种面向非结构化室外场景的轻量级地貌语义感知方法》</p>
   </div>
@@ -135,17 +143,17 @@
   <section id="award" class="animate-section mb-16">
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">获奖经历</h2>
     <div class="glass neon-hover text-gray-200 space-y-3">
-      <p>• 连续获得辽宁石油化工大学国家励志奖学金3次、优秀学生3次、杭州电子科技大学新生二等奖学金，研究生三等奖学金</p>
+      <p>• 连续获得辽宁石油化工大学国家励志奖学金3次、优秀学生3次、杭州电子科技大学新生二等奖学金，研究生二等奖学金、研究生三等奖学金</p>
       <p>• 研究生人工智能创新大赛 二等奖（队长）2025.09</p>
-      <p class="ml-6 text-[#87e8de] text-sm">开发融合大模型语义交互能力的智能服务机器人系统。负责 YOLO 行人感知、卡尔曼滤波轨迹优化、ROS 激光 SLAM 与多传感器融合导航，协作完成大模型 RAG-LLM 语义交互，实现机器人智能跟随与引导导航。</p>
+      <p class="ml-6 text-[#87e8de] text-sm">开发融合大模型语义交互能力的智能服务机器人系统。负责 YOLO 行人感知、卡尔曼滤波轨迹优化、ROS 激光 SLAM 与多传感器融合导航，协作完成大模型 RAG‑LLM 语义交互，实现机器人智能跟随与引导导航。</p>
       <p>• 中国研究生机器人创新设计大赛 三等奖 2025.09</p>
-      <p class="ml-6 text-[#87e8de] text-sm">面向毛纺车间的多智能体协作巡查 - 清扫机器人，主要解决毛纺车间羊毛粉尘多、清洁效率低、人工成本高的行业痛点。项目采用侦察机器人 + 清洁机器人协同作业，侦察机器人负责全局巡检、羊毛识别与地图构建，清洁机器人负责精准清扫，实现感知 — 决策 — 执行全流程自动化，整体效率比传统方式提升 55%，能耗降低 28%。</p>
+      <p class="ml-6 text-[#87e8de] text-sm">面向毛纺车间的多智能体协作巡查‑清扫机器人，主要解决毛纺车间羊毛粉尘多、清洁效率低、人工成本高的行业痛点。项目采用侦察机器人 + 清洁机器人协同作业，侦察机器人负责全局巡检、羊毛识别与地图构建，清洁机器人负责精准清扫，实现感知‑决策‑执行全流程自动化，整体效率比传统方式提升 55%，能耗降低 28%。</p>
       <p>• 辽宁省大学生数学建模竞赛 一等奖（队长）2022.07</p>
       <p class="ml-6 text-[#87e8de] text-sm">以空调为研究对象，从制冷节能的角度出发进行优化，根据题目所给数据，建立相关性分析模型和多元线性回归模型，用粒子群算法对空调制冷的节能优化问题进行研究。主要负责文章前期的资料搜集、模型建立、Matlab 程序编写、图表绘制、以及 PPT 制作和演讲。</p>
       <p>• 全国大学生数学建模竞赛 三等奖（队长）2022.09</p>
       <p class="ml-6 text-[#87e8de] text-sm">以波浪能装置为研究对象，根据题目所给数据，用微积分的思想，使用 Simulink 工具箱进行仿真模拟，建立其浮子与振子的微分方程运动模型，从而预测在多种情况下，前 100s 的垂直位移和速度，再通过蒙特卡洛思想用模拟退火算法寻找最优阻尼系数，从而求出不同情况下的最大输出功率。主要负责前期的资料搜集、模型建立、用 SPSS 等分析数据、用 Matlab 编写程序、用 Origin 等绘制图表、用 TeXstudio 撰写论文。</p>
       <p>• 全国大学生英语竞赛（NECCS）三等奖 2023.06</p>
-      <p>• 参与组织杭州电子科技大学第四届Robotics Challenge of HDU-ITMO 并获“优秀志愿者”</p>
+      <p>• 参与组织杭州电子科技大学第四届Robotics Challenge of HDU‑ITMO 并获“优秀志愿者”</p>
       <p>• 多次担任研究生答辩秘书，负责答辩过程中场控，计时和速记主要内容。</p>
     </div>
   </section>
@@ -154,18 +162,16 @@
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">项目经历</h2>
     <div class="glass neon-hover">
       <p class="text-xl font-bold text-white">运输机器人导航与规划技术研发</p>
-      <p class="text-[#00F3FF] mt-2">企业百万级项目 | 2023-2025</p>
-
-      <div class="mt-4 text-gray-300 leading-relaxed">
+      <p class="text-[#00F3FF] mt-2">企业百万级项目（项目编号：2023Y035）｜2023‑2025，经费120万</p>
+      <div class="mt-4 text-gray-300 leading‑relaxed">
         <p class="mb-2"><strong>项目介绍：</strong>本项目旨在开发一套室内外复杂运维环境下大型运输车的定位与导航系统，包括：多传感器数据融合、高精度定位、雨雾环境下导航、路径规划与导航等。</p>
     </div>
-
-    <p class="text-[#00F3FF] mt-4 font-semibold">主要负责：</p>
-      <ul class="text-gray-200 mt-4 space-y-2">
+    <p class="text‑[#00F3FF] mt‑4 font‑semibold">主要负责：</p>
+      <ul class="text-gray‑200 mt‑4 space‑y‑2">
         <li>• 针对 AGV 点云干扰问题，设计多条件约束点云滤波与圆柱拟合的反光柱检测算法，消除反光条噪声与误判，支撑 AGV 厘米级精准停车与自动回充。</li>
-        <li>• 优化梯形加减速与路径预读速度规划，解决速度间断、减速效率低问题，提升导航流畅度与实车效率。</li>
-        <li>• 基于 LIO-SAM 完成激光 SLAM 建图，实现室内外复杂环境稳定定位与建图。</li>
-        <li>• 优化A*算法，针对园区场景及运输路线要求，结合车道线信息和调度点信息优化A*规划算法。并利用B样条曲线进行路径平滑，运输的参考路线。同时，提供路线文件加载和自主规划两种选择，以便适应更加复杂的使用需求。</li>
+        <li>• 改进四轮转向版 Pure Pursuit 跟踪算法；优化梯形加减速与路径预读速度规划，解决速度间断、减速效率低问题，提升导航流畅度与实车效率。</li>
+        <li>• 基于 LIO‑SAM 完成激光 SLAM 建图，实现室内外复杂环境稳定定位与建图。</li>
+        <li>• 优化路网约束 A*规划算法，结合车道线信息和调度点信息；利用B样条曲线进行路径平滑，同时支持路线文件加载和自主规划两种模式。</li>
         <li>• 梳理调度系统框架，完善可视化界面与仿真流程，输出全套开发文档，保障项目迭代维护。</li>
       </ul>
     </div>
@@ -179,33 +185,36 @@
       <span class="skill-tag">计算机二级</span>
       <span class="skill-tag">C / C++</span>
       <span class="skill-tag">Python</span>
-      <span class="skill-tag">ROS</span>
+      <span class="skill-tag">ROS1/ROS2</span>
+      <span class="skill-tag">Nav2</span>
       <span class="skill-tag">PyTorch</span>
       <span class="skill-tag">YOLO</span>
       <span class="skill-tag">OpenCV</span>
       <span class="skill-tag">PCL</span>
       <span class="skill-tag">轻量化深度学习</span>
-      <span class="skill-tag">路径规划</span>
+      <span class="skill-tag">路径规划(A*/D*/TEB/DWB)</span>
       <span class="skill-tag">点云处理</span>
       <span class="skill-tag">SLAM算法</span>
+      <span class="skill-tag">RK3588</span>
+      <span class="skill-tag">Git</span>
+      <span class="skill-tag">Patchwork++</span>
+      <span class="skill-tag">DDLRNav</span>
+      <span class="skill-tag">UWB/ToF</span>
     </div>
-
       <div class="mt-6 text-gray-200">
       <p>• 熟练掌握机器人感知、导航、路径规划、点云处理与深度学习算法开发，具备完整项目工程落地能力。</p>
-      <p>• 编程语言与工具：熟悉C/C++编程、Python; 熟悉ROS开发，RViz 可视化、URDF 建模、Docker 镜像管理。</p>
-      <p>• 视觉与点云处理：熟悉OpenCV、PCL等开源库的使用、熟悉图像检测、特征提取、激光点云预处理、NDT/ICP 配准。</p>
+      <p>• 编程语言与工具：熟悉C/C++编程、Python; 熟悉ROS1/ROS2开发，RViz 可视化、URDF 建模、Docker 镜像管理、Git版本管理、RK3588开发板部署调试。</p>
+      <p>• 视觉与点云处理：熟悉OpenCV、PCL等开源库的使用、熟悉图像检测、特征提取、激光点云预处理、Patchwork++地面分割、NDT/ICP 配准。</p>
       <p>• 数据标注：熟练使用 Labelme 完成严格边缘语义标注，支持模型训练。</p>
       <p>• 熟悉深度学习PyTorch框架、熟悉YOLO系列及语义分割网络，曾自主搭建、训练以及改进语义分割模型，完成机器人环境感知。</p>
-      <p>• 熟悉机器人常见传感器：单线/多线激光雷达、深度相机、IMU、RTK等，掌握内参标定与雷达相机联合标定。</p>
-      <p>• 熟悉 Cartographer、Gmapping、LIO-SAM 等建图算法；具备激光点云处理与建图框架部署经验。</p>
+      <p>• 熟悉机器人常见传感器：单线/多线激光雷达、深度相机、IMU、RTK、UWB、ToF等，掌握内参标定与雷达‑相机联合标定。</p>
+      <p>• 熟悉 Cartographer、Gmapping、LIO‑SAM、Point‑lio 等建图算法；熟练Nav2导航栈，掌握TEB/DWB局部规划器调参，具备激光点云处理与建图框架部署经验。</p>
       <p>• 硕士方向：复杂环境下机器人轻量化语义地图构建与自主导航，轻量化网络部署与2.5D高程地图构建。</p>
-
-      <p>• 大学英语六级 CET-6（474）：可熟练阅读英文文献、交流沟通。</p>
+      <p>• 大学英语六级 CET‑6（474）：可熟练阅读英文文献、交流沟通。</p>
       <p>• 通过全国计算机等级考试二级</p>
-      <p class="ml-6 text-[#87e8de] text-sm mb-1">Word：熟练使用Word 80%的功能。</p>
-      <p class="ml-6 text-[#87e8de] text-sm mb-1">Excel：精通函数公式、数据统计与可视化分析。</p>
-      <p class="ml-6 text-[#87e8de] text-sm">PowerPoint：曾在网站上做过多次PowerPoint模板，擅长美化PPT。</p>
-
+      <p class="ml‑6 text‑[#87e8de] text‑sm mb‑1">Word：熟练使用Word 80%的功能。</p>
+      <p class="ml‑6 text‑[#87e8de] text‑sm mb‑1">Excel：精通函数公式、数据统计与可视化分析。</p>
+      <p class="ml‑6 text‑[#87e8de] text‑sm">PowerPoint：曾在网站上做过多次PowerPoint模板，擅长美化PPT。</p>
       <p>• 具备扎实的数学建模基础，熟练使用 Matlab、SPSS、Origin 完成数据分析、建模、仿真与可视化。</p>
       <p>• 熟练使用 LaTeX 撰写学术论文，具备良好的科研写作与汇报展示能力。</p>
       <p>• 掌握 STM32、Keil5 基础开发，具备电路焊接、程序调试、硬件调试能力。</p>
@@ -215,25 +224,22 @@
 
   <section class="animate-section mb-16">
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">自我评价</h2>
-    <div class="glass neon-hover text-gray-200 leading-relaxed">
-      学习能力强，做事严谨负责，热爱机器人技术研发，具备扎实科研与工程能力。硕士期间已录用SCI 论文 1篇，在投SCI论文1篇，中文期刊1篇，积累了扎实的学术与工程实践能力。善于团队协作，能高效推进项目落地，有较强责任心与执行力，积极进取，持续深耕机器人领域。
+    <div class="glass neon-hover text-gray-200 leading‑relaxed">
+      学习能力强，做事严谨负责，热爱机器人技术研发，具备扎实科研与工程能力。硕士期间已录用SCI 论文 2篇，中文核心1篇在投；拥有具身智能企业实习落地经验。善于团队协作，能高效推进项目落地，有较强责任心与执行力，积极进取，持续深耕机器人环境感知与自主导航方向。
     </div>
   </section>
-
 </div>
-
 <footer class="text-center py-10 text-gray-400">
   <p>© 2026 张浩然 · 个人简历</p>
-    <p class="mt-2">QQ邮箱：
-    <span class="text-[#00F3FF]">3393827900@qq.com</span>
+    <p class="mt‑2">QQ邮箱：
+    <span class="text‑[#00F3FF]">3393827900@qq.com</span>
   </p>
-  <p class="mt-2">CSDN博客：
-    <a href="https://blog.csdn.net/m0_53560331?spm=1000.2115.3001.5343" target="_blank" class="text-[#00F3FF]">
+  <p class="mt‑2">CSDN博客：
+    <a href="https://blog.csdn.net/m0_53560331?spm=1000.2115.3001.5343" target="_blank" class="text‑[#00F3FF]">
       https://blog.csdn.net/m0_53560331
     </a>
   </p>
 </footer>
-
 <script>
 // 轻量激光雨背景，手机零压力
 const container = document.getElementById('bg3d');
@@ -246,14 +252,11 @@ canvas.style.height = '100%';
 canvas.style.zIndex = '-1';
 canvas.style.opacity = '0.35';
 container.appendChild(canvas);
-
 const ctx = canvas.getContext('2d');
 let w = canvas.width = window.innerWidth;
 let h = canvas.height = window.innerHeight;
-
 const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 const count = isMobile ? 35 : 70; // 手机大幅减少数量
-
 const lines = [];
 for(let i=0;i<count;i++){
   lines.push({
@@ -265,7 +268,6 @@ for(let i=0;i<count;i++){
     thick: Math.random()*1+0.2
   })
 }
-
 function draw(){
   ctx.fillStyle = 'rgba(0,0,0,0.07)';
   ctx.fillRect(0,0,w,h);
@@ -285,22 +287,18 @@ function draw(){
   requestAnimationFrame(draw);
 }
 draw();
-
 window.addEventListener('resize',()=>{
   w = canvas.width = window.innerWidth;
   h = canvas.height = window.innerHeight;
 })
-
 // 切后台暂停
 document.addEventListener('visibilitychange', ()=>{
   if(document.hidden) cancelAnimationFrame(draw);
   else requestAnimationFrame(draw);
 })
-
 // 滚动动画
-const obs = new IntersectionObserver(e=>e.forEach(i=>i.isIntersecting&&i.target.classList.add('animate-fade-in')),{threshold:0.1});
-document.querySelectorAll('.animate-section').forEach(s=>obs.observe(s));
+const obs = new IntersectionObserver(e=>e.forEach(i=>i.isIntersecting&&i.target.classList.add('animate‑fade‑in')),{threshold:0.1});
+document.querySelectorAll('.animate‑section').forEach(s=>obs.observe(s));
 </script>
-
 </body>
 </html>
