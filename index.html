@@ -120,10 +120,12 @@
       <p class="font-bold text-white text-lg">申昊科技｜具身智能算法实习生 | 2025.06‑2025.09</p>
       <p class="text-[#00F3FF] mt-2">巡检机器人感知与导航算法开发</p>
       <ul class="text-gray-200 mt-4 space-y-2">
-        <li>• 负责轮式巡检机器人ROS2‑Humble平台感知与导航模块开发、问题定位与实车调试。</li>
-        <li>• 基于Point‑lio完成多传感器融合建图；完成雷达‑相机外参标定，部署Patchwork++地面分割。</li>
-        <li>• 针对变电站场景优化Nav2导航栈，调优TEB、DWB局部规划器，处理多网卡DDS通讯异常。</li>
-        <li>• 编写功能脚本、launch部署文件，输出调试记录文档，支撑样机外场测试。</li>
+        <li>• 改进 Patchwork++，开发 patchworkpp_stair_mapping 三维可通行建图模块：针对PCT Planner 依赖 GPU、大图易造成内存溢出、显存硬件成本高的问题；采用单帧点云 CPU 实时处理，无 GPU 依赖，完成地面与楼梯可通行区域提取；优化体素哈希与关键帧逻辑建图过程CPU 占用下降 20%，适配宇树Go2、AS2、钢镚L2等多款四足机器人。</li>
+        <li>• 基于自研可通行地图优化 dddmr_global_planner，自研DDLRNav 动态全局规划算法，新增地图预处理及加载缓存机制，大幅降低导航开启时间，三维地形与动态路径更新，实现跨楼层导航。</li>
+        <li>• 负责四足机器人导航避障开发，基于 Nav2 完成多款规划算法对比选型，完成 RK3588 交叉编译与嵌入式部署；基于宇树 SDK 实现单楼层自主巡检与自动回充，到点精度 5cm, 最窄支持 0.55m 通道通行。</li>
+        <li>• 自研方向性 APF 人工势场避障模块，实现遥控模式实时避障，提升人机操控安全性与环境适应性。</li>
+        <li>• 完成 5 套跟随方案对比，落地激光 + UWB 融合跟随；输出全套测试文档，参与团队模块联调。</li>
+        <li>• 调试部署二维码定位算法，进一步提高自动回桩充电精度。</li>
       </ul>
     </div>
   </section>
@@ -132,8 +134,8 @@
   <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">科研成果</h2>
   <div class="glass neon-hover">
     <p class="text-[#00F3FF] font-bold mb-1">SCI 一作录用 ×2</p>
-    <p class="text-white mb-4">第一作者发表 SCI 期刊论文 1 篇（KSII Transactions on Internet and Information Systems, JCR Q4）,《DMRINet: A lightweight real-time semantic segmentation network for unstructured terrain segmentation tasks》, 围绕非结构化的野外轻量化的语义实时感知展开研究。</p>
-    <p class="text-white mb-4">第一作者 SCI 录用：《A Novel Terrain Semantic Map Building Framework for Field Robots》</p>
+    <p class="text-white mb-4">第一作者 SCI 录用：（KSII Transactions on Internet and Information Systems, JCR Q4）,《DMRINet: A lightweight real-time semantic segmentation network for unstructured terrain segmentation tasks》, 围绕非结构化的野外轻量化的语义实时感知展开研究。</p>
+    <p class="text-white mb-4">第一作者 SCI 录用：（Robotic Intelligence and Automation）《A Novel Terrain Semantic Map Building Framework for Field Robots》，本文提出一种新型地形语义建图框架 TSM-BF，面向野外机器人导航与决策，可生成细粒度地形表达。区别于仅区分障碍物与可通行区域的传统地图，该框架融合深度相机与三维激光雷达数据，识别多种地形并构建地形语义地图；同时引入时间同步机制，缓解地形识别与栅格建图之间的数据失配问题。基于该框架实现了地形语义建图方法，实验表明，构建的语义地图包含丰富地形信息，能够有效支撑野外机器人可靠导航与行为决策。</p>
     <p class="text-[#00F3FF] font-bold mb-1">中文核心在投</p>
     <p class="text-gray-300">《一种面向非结构化室外场景的轻量级地貌语义感知方法》</p>
   </div>
@@ -165,9 +167,9 @@
     </div>
     <p class="text-[#00F3FF] mt-4 font-semibold">主要负责：</p>
       <ul class="text-gray-200 mt-4 space-y-2">
-        <li>• 针对 AGV 点云干扰问题，设计多条件约束点云滤波与圆柱拟合的反光柱检测算法，消除反光条噪声与误判，支撑 AGV 厘米级精准停车与自动回充。</li>
-        <li>• 改进四轮转向版 Pure Pursuit 跟踪算法；优化梯形加减速与路径预读速度规划，解决速度间断、减速效率低问题，提升导航流畅度与实车效率。</li>
-        <li>• 基于 LIO‑SAM 完成激光 SLAM 建图，实现室内外复杂环境稳定定位与建图。</li>
+        <li>• 针对AGV点云干扰问题，设计反光柱检测与多条件约束点云滤波算法，消除反光条误判，实现厘米级精准回桩。优化梯形加减速与路径预读速度规划，解决速度间断、减速效率低问题，提升导航流畅度与实车效率。</li>
+        <li>• 针对四轮转向重载AGV双向运动特性，对传统Pure Pursuit轨迹跟踪算法进行改进，将重载AGV的速度稳定在2.5m/s, 最大绝对跟踪误差小于15cm。</li>
+        <li>• 设计路网约束A*算法有效降低无效搜索，路径贴合车道规则，B样条平滑轨迹大幅提升AGV行驶平顺性与作业稳定性。</li>
         <li>• 优化路网约束A*规划算法，针对园区场景及运输路线要求，结合车道线信息和调度点信息优化A*规划算法。并利用B样条曲线进行路径平滑，运输的参考路线。同时，提供路线文件加载和自主规划两种选择，以便适应更加复杂的使用需求。</li>
         <li>• 梳理调度系统框架，完善可视化界面与仿真流程，输出全套开发文档，保障项目迭代维护。</li>
       </ul>
@@ -198,14 +200,13 @@
       <span class="skill-tag">UWB/ToF</span>
     </div>
       <div class="mt-6 text-gray-200">
-      <p>• 熟练掌握机器人感知、导航、路径规划、点云处理与深度学习算法开发，具备完整项目工程落地能力。</p>
-      <p>• 编程语言与工具：熟悉C/C++编程、Python; 熟悉ROS1/ROS2开发，RViz 可视化、URDF 建模、Docker 镜像管理、Git版本管理、RK3588开发板部署调试。</p>
-      <p>• 视觉与点云处理：熟悉OpenCV、PCL等开源库的使用、熟悉图像检测、特征提取、激光点云预处理、Patchwork++地面分割、NDT/ICP 配准。</p>
-      <p>• 数据标注：熟练使用 Labelme 完成严格边缘语义标注，支持模型训练。</p>
-      <p>• 熟悉深度学习PyTorch框架、熟悉YOLO系列及语义分割网络，曾自主搭建、训练以及改进语义分割模型，完成机器人环境感知。</p>
-      <p>• 熟悉机器人常见传感器：单线/多线激光雷达、深度相机、IMU、RTK、UWB、ToF等，掌握内参标定与雷达相机联合标定。</p>
-      <p>• 熟悉 Cartographer、Gmapping、LIO‑SAM、Point‑lio 等建图算法；熟练Nav2导航栈，掌握TEB/DWB局部规划器调参，具备激光点云处理与建图框架部署经验。</p>
-      <p>• 硕士方向：复杂环境下机器人轻量化语义地图构建与自主导航，轻量化网络部署与2.5D高程地图构建。</p>
+      <p>• 编程语言 & 工程工具：C/C++、Python；ROS/ROS2、RViz、URDF、Docker；Git版本管理；RK3588交叉编译与嵌入式部署、SSH调试、DDS通信。</p>
+      <p>• 视觉点云处理：OpenCV、PCL；图像特征提取、NDT/ICP点云配准；Patchwork++算法改进。</p>
+      <p>• 深度学习：PyTorch；YOLO、语义分割网络；轻量化网络设计、模型训练与调优、机器人环境语义感知。</p>
+      <p>• 传感器与标定：激光雷达、UWB、深度相机、ToF、IMU、RTK；掌握相机内参标定、激光 相机联合标定。</p>
+      <p>• 建图定位：Cartographer、Gmapping、LIO SAM；将语义信息融合进 LIO SAM，构建室外复杂场景语义地图, 改进 Patchwork++，开发 patchworkpp_stair_mapping 三维可通行建图模块。</p>
+      <p>• 导航避障：Nav2 框架；A*、D*、Theta*、DWB、TEB、Scan Planner；基于 dddmr_planner 优化自研DDLRNav 动态全局规划算法，实现预处理地图缓存保存与加载，支持三维地形、跨楼层动态路径规划；APF 人工势场避障、多传感器融合跟随方案落地。</p>
+      <p>• 科研方向：野外复杂环境多机器人轻量化语义建图与自主导航；设计感知网络，构建 2.5D 语义高程栅格地图，结合 RTK 实现多机器人建图导航。</p>
       <p>• 大学英语六级 CET-6（474）：可熟练阅读英文文献、交流沟通。</p>
       <p>• 通过全国计算机等级考试二级</p>
       <p class="ml-6 text-[#87e8de] text-sm mb-1">Word：熟练使用Word 80%的功能。</p>
