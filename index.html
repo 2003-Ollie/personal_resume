@@ -84,21 +84,28 @@
 </nav>
 <div class="max-w-4xl mx-auto px-5 pt-28">
   
-<!-- 左右分栏：左侧文字，右侧长方形头像 9:16 -->
-<div style="display: flex; align-items: center; justify-content: space-between; gap:40px; padding:20px 0 35px; margin-bottom:40px; flex-wrap: wrap;">
-  <!-- 左侧文字信息 -->
-  <div style="flex:1; min-width:300px;">
+<!-- 左右分栏：左侧文字，右侧长方形9:16头像，PC/手机全部保持左右并排 -->
+<div style="display: flex; align-items: center; justify-content: space-between; gap:24px; padding:20px 0 35px; margin-bottom:40px; flex-wrap: nowrap;">
+  <!-- 左侧文字信息 min-width:0 允许压缩，防止手机横向溢出 -->
+  <div style="flex:1; min-width:0;">
     <p style="font-size: 24px; color: #ffffff; margin: 0 0 8px 0;">Hello,</p>
     <h1 style="font-size: 40px; color: #00F3FF; font-weight: bold; margin: 0 0 14px 0;">I'm 张浩然</h1>
-    <!-- 联系方式字体放大 -->
+    <!-- 联系方式放大字号 -->
     <div class="text-gray-400 space-y-1" style="font-size: 19px; line-height: 1.8;">
       <p>2003-02-21 | 男 | 中共党员</p>
       <p>17880151269@163.com | 178-8015-1269</p>
     </div>
   </div>
 
-  <!-- 右侧长方形头像 9:16竖版比例 -->
-  <div style="width: 180px; height: 320px; border-radius:12px; border: 2px solid #00F3FF; overflow: hidden; flex-shrink:0;">
+  <!-- 右侧长方形头像 9:16 固定比例，flex-shrink:1 小屏自动缩小图片 -->
+  <div style="
+    width: 180px;
+    height: 320px;
+    border-radius:12px;
+    border: 2px solid #00F3FF;
+    overflow: hidden;
+    flex-shrink:1;
+  ">
     <img 
       src="zhr_life2.jpg" 
       alt="头像"
@@ -107,6 +114,7 @@
       style="width:100%; height:100%; object-fit: cover;">
   </div>
 </div>
+
 
   
   <section id="edu" class="animate-section mb-16">
