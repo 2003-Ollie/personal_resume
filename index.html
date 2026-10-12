@@ -83,24 +83,29 @@
   </div>
 </nav>
 <div class="max-w-4xl mx-auto px-5 pt-28">
-<div style="text-align: center; padding: 20px 0 35px; margin-bottom: 40px;">
-  <!-- 蓝色外框整体放大为100px，图片同步放大 -->
-  <div style="width: 130px; height: 130px; border-radius: 50%; border: 2px solid #00F3FF; margin: 0 auto 18px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+<!-- 左右分栏：左侧文字，右侧长方形头像 -->
+<div style="display: flex; align-items: center; justify-content: space-between; gap:40px; padding:20px 0 35px; margin-bottom:40px; flex-wrap: wrap;">
+  <!-- 左侧文字信息 -->
+  <div style="flex:1; min-width:300px;">
+    <p style="font-size: 24px; color: #ffffff; margin: 0 0 8px 0;">Hello,</p>
+    <h1 style="font-size: 40px; color: #00F3FF; font-weight: bold; margin: 0 0 14px 0;">I'm 张浩然</h1>
+    <div class="text-gray-400 text-sm space-y-1">
+      <p>2003-02-21 | 男 | 中共党员</p>
+      <p>zhanghr@hdu.edu.cn | 178-8015-1269</p>
+    </div>
+  </div>
+
+  <!-- 右侧长方形头像【重点：去掉border-radius:50%】 -->
+  <div style="width: 200px; height: 140px; border-radius:12px; border: 2px solid #00F3FF; overflow: hidden; flex-shrink:0;">
     <img 
       src="zhr_life2.jpg" 
       alt="头像"
       loading="lazy"
       decoding="async"
-      style="width: 92%; height: 92%; object-fit: contain; border-radius: 50%;">
-  </div>
-  <p style="font-size: 24px; color: #ffffff; margin: 0 0 8px 0;">Hello,</p>
-  <h1 style="font-size: 40px; color: #00F3FF; font-weight: bold; margin: 0 0 14px 0;">I'm 张浩然</h1>
-  
-  <div class="text-gray-400 text-sm space-y-1 max-w-xs mx-auto">
-    <p>2003-02-21 | 男 | 中共党员</p>
-    <p>zhanghr@hdu.edu.cn | 178-8015-1269</p>
+      style="width:100%; height:100%; object-fit: cover;">
   </div>
 </div>
+
   
   <section id="edu" class="animate-section mb-16">
     <h2 class="text-2xl text-[#7000FF] font-bold mb-6 pl-3 border-l-4 border-[#7000FF]">教育背景</h2>
