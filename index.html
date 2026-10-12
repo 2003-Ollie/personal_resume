@@ -81,7 +81,7 @@
       color:#d1d5db;
     }
 
-    /* 小于500px手机，字号缩小，布局仍然左右并排 */
+    /* 小于500px手机竖屏：缩小文字 + 缩小图片，布局依旧左右并排 */
     @media (max-width: 500px) {
       .hello-text {
         font-size: 18px !important;
@@ -91,6 +91,10 @@
       }
       .contact-info {
         font-size: 15px !important;
+      }
+      .header-img-box {
+        width: 120px !important;
+        height: 213px !important; /* 保持9:16比例 */
       }
     }
   </style>
@@ -127,8 +131,8 @@
       <p>17880151269@163.com | 178-8015-1269</p>
     </div>
   </div>
-  <!-- 右侧长方形头像 9:16 固定比例，flex-shrink:1 小屏自动缩小图片 -->
-  <div style="
+  <!-- 右侧长方形头像 9:16 固定比例 -->
+  <div class="header-img-box" style="
     width: 180px;
     height: 320px;
     border-radius:12px;
